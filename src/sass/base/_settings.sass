@@ -46,3 +46,46 @@ input, textarea
   text-transform: uppercase
   font-weight: 500
   line-height: 1.2
+
+.btn
+  @include flexbox
+  align-items: center
+  gap: 10px
+  &-pattern
+    font-size: 14px
+    text-transform: uppercase
+    font-weight: 500
+    line-height: 16px
+    padding: 16px 20px 16px 74px
+    border-radius: 999px
+    border: 1px solid var(--color-stroke)
+    position: relative
+    height: 80px
+    transition: .3s
+    background-image: url(../img/pattern.png)
+    background-position: top right
+    background-size: 24px
+    span
+      transition: .3s
+    &::before
+      content: ''
+      position: absolute
+      left: 15px
+      display: block
+      width: 48px
+      height: 48px
+      border-radius: 100%
+      background-color: var(--color-accent)
+      background-repeat: no-repeat
+      background-position: center
+      background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M13.4763 9.16658L9.00625 4.69657L10.1848 3.51807L16.6666 9.99992L10.1848 16.4817L9.00625 15.3032L13.4763 10.8332H3.33325V9.16658H13.4763Z' fill='white'/%3E%3C/svg%3E%0A")
+      transition: .3s
+      z-index: 5
+    &:hover
+      background-color: var(--color-accent)
+      span
+        transform: translateX(-54px)
+      &::before
+        left: calc(100% - 48px - 15px)
+        background-color: var(--color-white)
+        background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M13.4763 9.16658L9.00625 4.69657L10.1848 3.51807L16.6666 9.99992L10.1848 16.4817L9.00625 15.3032L13.4763 10.8332H3.33325V9.16658H13.4763Z' fill='%23FF931E'/%3E%3C/svg%3E%0A")

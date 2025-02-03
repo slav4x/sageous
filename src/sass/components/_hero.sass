@@ -1,0 +1,28 @@
+.hero
+	height: 100vh
+	background: url(../img/hero-bg.jpg) no-repeat center / cover
+	.container
+		height: calc(100% - 50px)
+		@include flexbox
+		align-items: flex-end
+		justify-content: space-between
+	&-content
+		max-width: 650px
+	&-label
+		text-transform: uppercase
+		font-size: 32px
+		font-weight: 500
+		line-height: 1.1
+		margin-bottom: 35px
+		color: var(--color-accent)
+	&-title
+		text-transform: uppercase
+		font-size: 64px
+		font-weight: 500
+		line-height: 1.1
+		margin-bottom: 40px
+	&-desc
+		font-size: 18px
+		font-weight: 400
+		line-height: 1.4
+		color: var(--color-white-opacity)

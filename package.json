@@ -4,10 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "gulp",
-    "build": "gulp build",
     "dev": "gulp",
-    "prod": "cross-env NODE_ENV=production gulp build"
+    "build": "cross-env NODE_ENV=production gulp build",
+    "deploy": "npm run build && gulp deploy"
   },
   "repository": {
     "type": "git",
@@ -25,6 +24,8 @@
     "autoprefixer": "^10.4.20",
     "browser-sync": "^2.27.10",
     "cross-env": "^7.0.3",
+    "dotenv": "^16.4.7",
+    "fancy-log": "^2.0.0",
     "globals": "^15.14.0",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
@@ -42,7 +43,8 @@
     "gulp-sass": "^5.1.0",
     "gulp-terser": "^2.1.0",
     "gulp-typograf": "^4.0.3",
-    "sass": "^1.54.2"
+    "sass": "^1.54.2",
+    "vinyl-ftp": "^0.6.1"
   },
   "dependencies": {
     "is-pagelist": "^0.0.2"

@@ -1,3 +1,4 @@
+require('dotenv').config();
 const { src, dest, parallel, series, watch } = require('gulp');
 const browserSync = require('browser-sync').create();
 const njk = require('gulp-nunjucks-render');
@@ -15,8 +16,24 @@ const gulpIf = require('gulp-if');
 const listing = require('is-pagelist');
 const typograf = require('gulp-typograf');
 const babel = require('gulp-babel');
+const vinylFTP = require('vinyl-ftp');
+const log = require('fancy-log');
 
 const isProd = process.env.NODE_ENV === 'production';
+
+const ftpConfig = {
+  host: process.env.FTP_HOST,
+  user: process.env.FTP_USER,
+  password: process.env.FTP_PASS,
+  parallel: 5,
+  log: log,
+};
+
+const deploy = () => {
+  const conn = vinylFTP.create(ftpConfig);
+
+  return src('app/**/*', { base: 'app', buffer: false }).pipe(conn.dest(process.env.FTP_REMOTE_PATH));
+};
 
 // Очищаем папку `app`
 const clean = () => fs.rm('app', { recursive: true, force: true });
@@ -143,3 +160,6 @@ exports.default = series(clean, parallel(libs_js, js, libs_style, style, html, i
 
 // **Сборка проекта**
 exports.build = series(clean, parallel(libs_js, js, libs_style, style, html, img, resources), pageList);
+
+// **Деплой проекта**
+exports.deploy = series(deploy);

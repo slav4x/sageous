@@ -26,23 +26,6 @@
 	&-burger
 		margin-left: auto
 		position: relative
-		&__open
-			cursor: pointer
-			padding: 11px 15px
-			@include flexbox
-			align-items: center
-			gap: 10px
-			border-radius: 30px
-			background: var(--color-gray)
-			&-name
-				font-size: 16px
-				font-weight: 500
-				line-height: 20px
-				text-transform: uppercase
-			&-icon
-				width: 24px
-				height: 24px
-				background: #000
 		&__button
 			cursor: pointer
 			@include flexbox
@@ -62,9 +45,15 @@
 		&__open
 			padding: 11px 15px
 			border-radius: 30px
-			background: var(--color-gray)
+			background-color: var(--color-gray)
+			background-image: url(../img/pattern.png)
+			background-position: top right
+			background-size: 24px
+			transition: .3s
 			.header-burger__button-icon
 				background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3 4H21V6H3V4ZM3 11H21V13H3V11ZM3 18H21V20H3V18Z' fill='white'/%3E%3C/svg%3E%0A")
+			&:hover
+				background-color: var(--color-accent)
 		&__close
 			.header-burger__button-icon
 				background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10.5859 12L2.79297 4.20706L4.20718 2.79285L12.0001 10.5857L19.793 2.79285L21.2072 4.20706L13.4143 12L21.2072 19.7928L19.793 21.2071L12.0001 13.4142L4.20718 21.2071L2.79297 19.7928L10.5859 12Z' fill='white'/%3E%3C/svg%3E%0A")
@@ -74,7 +63,10 @@
 			top: 0
 			right: 0
 			border-radius: 30px
-			background: var(--color-gray)
+			background-color: var(--color-gray)
+			background-image: url(../img/pattern.png)
+			background-position: top right
+			background-size: 24px
 			pointer-events: none
 			transition: .2s
 			overflow: hidden

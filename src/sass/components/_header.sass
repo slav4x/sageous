@@ -1,0 +1,208 @@
+.header
+	margin-top: 40px
+	&::before
+		content: ''
+		position: fixed
+		top: 0
+		right: 0
+		bottom: 0
+		left: 0
+		background: var(--color-black)
+		z-index: 10
+		opacity: 0
+		pointer-events: none
+		transition: .2s
+	&.show::before
+		opacity: 0.85
+		pointer-events: auto
+	.container
+		@include flexbox
+		align-items: flex-start
+		z-index: initial
+	&-logo
+		display: block
+		img
+			height: 46px
+	&-burger
+		margin-left: auto
+		position: relative
+		&__open
+			cursor: pointer
+			padding: 11px 15px
+			@include flexbox
+			align-items: center
+			gap: 10px
+			border-radius: 30px
+			background: var(--color-gray)
+			&-name
+				font-size: 16px
+				font-weight: 500
+				line-height: 20px
+				text-transform: uppercase
+			&-icon
+				width: 24px
+				height: 24px
+				background: #000
+		&__button
+			cursor: pointer
+			@include flexbox
+			align-items: center
+			gap: 10px
+			&-name
+				font-size: 16px
+				font-weight: 500
+				line-height: 20px
+				text-transform: uppercase
+			&-icon
+				width: 24px
+				height: 24px
+				background-repeat: no-repeat
+				background-position: center
+				background-size: cover
+		&__open
+			padding: 11px 15px
+			border-radius: 30px
+			background: var(--color-gray)
+			.header-burger__button-icon
+				background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3 4H21V6H3V4ZM3 11H21V13H3V11ZM3 18H21V20H3V18Z' fill='white'/%3E%3C/svg%3E%0A")
+		&__close
+			.header-burger__button-icon
+				background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10.5859 12L2.79297 4.20706L4.20718 2.79285L12.0001 10.5857L19.793 2.79285L21.2072 4.20706L13.4143 12L21.2072 19.7928L19.793 21.2071L12.0001 13.4142L4.20718 21.2071L2.79297 19.7928L10.5859 12Z' fill='white'/%3E%3C/svg%3E%0A")
+		&__popup
+			position: absolute
+			z-index: 20
+			top: 0
+			right: 0
+			border-radius: 30px
+			background: var(--color-gray)
+			pointer-events: none
+			transition: .2s
+			overflow: hidden
+			padding: 30px
+			width: 400px
+			opacity: 0
+			@include flexbox
+			flex-direction: column
+			align-items: flex-start
+			gap: 60px
+			&.show
+				pointer-events: auto
+				opacity: 1
+			&-head
+				width: 100%
+				@include flexbox
+				align-items: center
+				justify-content: space-between
+			&-label
+				font-size: 14px
+				color: var(--color-white-opacity)
+				line-height: 18px
+			&-nav
+				@include flexbox
+				flex-direction: column
+				align-items: flex-start
+				font-size: 32px
+				text-transform: uppercase
+				font-weight: 500
+				line-height: 38px
+				gap: 10px
+				li
+					a
+						transition: .2s
+						display: block
+						overflow: hidden
+						position: relative
+						&::before
+							content: ''
+							position: absolute
+							top: 0
+							bottom: 0
+							left: 0px
+							width: 0px
+							height: 0px
+							border-radius: 100%
+							background: var(--color-accent)
+							margin: auto 0
+							transition: .2s
+						&:hover
+							color: var(--color-accent)
+							padding-left: 20px
+							&::before
+								width: 10px
+								height: 10px
+			&-contacts
+				width: 100%
+				@include flexbox
+				align-items: flex-start
+				justify-content: space-between
+				li
+					&:nth-child(2n)
+						text-align: right
+					span
+						display: block
+						margin-bottom: 15px
+					a
+						display: block
+						font-size: 16px
+						font-weight: 500
+						transition: .2s
+						line-height: 20px
+						&:hover
+							color: var(--color-accent)
+	&-home
+		position: absolute
+		top: 0
+		left: 0
+		right: 0
+		.header-burger
+			display: none
+	&-row
+		@include flexbox
+		align-items: flex-start
+		justify-content: space-between
+		max-width: 565px
+		width: 100%
+		margin-left: auto
+	&-col
+		@include flexbox
+		flex-direction: column
+		align-items: flex-start
+		gap: 40px
+	&-nav
+		p
+			font-size: 14px
+			color: var(--color-white-opacity)
+			line-height: 18px
+			margin-bottom: 20px
+		ul
+			font-size: 16px
+			line-height: 20px
+			font-weight: 500
+			@include flexbox
+			flex-direction: column
+			align-items: flex-start
+			gap: 10px
+			li
+				a
+					transition: .2s
+					display: block
+					position: relative
+					&::before
+						content: ''
+						position: absolute
+						top: 0
+						bottom: 0
+						left: -16px
+						width: 0px
+						height: 0px
+						border-radius: 100%
+						background: var(--color-accent)
+						margin: auto 0
+						transition: .2s
+						pointer-events: none
+				&:hover a
+					color: var(--color-accent)
+					transform: translateX(16px)
+					&::before
+						width: 6px
+						height: 6px

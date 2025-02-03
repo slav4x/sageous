@@ -1,0 +1,79 @@
+.footer
+	background: rgba(0,0,0,.35)
+	&-main
+		padding: 80px 0
+		.container
+			@include flexbox
+			align-items: flex-start
+			gap: 40px
+	&-logo
+		display: block
+		img
+			height: 46px
+	&-row
+		@include flexbox
+		align-items: flex-start
+		justify-content: space-between
+		max-width: 1060px
+		flex: 1
+		margin-left: auto
+	&-col
+		@include flexbox
+		flex-direction: column
+		align-items: flex-start
+		gap: 40px
+	&-nav
+		p
+			font-size: 14px
+			color: var(--color-white-opacity)
+			line-height: 18px
+			margin-bottom: 20px
+		ul
+			font-size: 18px
+			line-height: 22px
+			font-weight: 500
+			@include flexbox
+			flex-direction: column
+			align-items: flex-start
+			gap: 10px
+			li
+				a
+					transition: .2s
+					display: block
+					position: relative
+					&::before
+						content: ''
+						position: absolute
+						top: 0
+						bottom: 0
+						left: -16px
+						width: 0px
+						height: 0px
+						border-radius: 100%
+						background: var(--color-accent)
+						margin: auto 0
+						transition: .2s
+						pointer-events: none
+				&:hover a
+					color: var(--color-accent)
+					transform: translateX(16px)
+					&::before
+						width: 6px
+						height: 6px
+	&-bottom
+		font-size: 14px
+		color: var(--color-white-opacity)
+		padding: 22px 0
+		.container
+			@include flexbox
+			align-items: flex-start
+			justify-content: space-between
+			gap: 40px
+		&__nav
+			@include flexbox
+			align-items: flex-start
+			gap: 40px
+			a
+				transition: .3s
+				&:hover
+					color: var(--color-accent)

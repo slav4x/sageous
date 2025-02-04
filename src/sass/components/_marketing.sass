@@ -1,0 +1,57 @@
+.marketing
+	padding: var(--padding-section) 0
+	&-head
+		@include flexbox
+		align-items: flex-start
+		justify-content: space-between
+		gap: 80px
+	&-desc
+		max-width: var(--width-content)
+		flex: 1
+		line-height: 1.4
+		color: var(--color-white-opacity)
+	&-list
+		margin-top: 140px
+		counter-reset: marketingItem
+	&-item
+		border-top: 1px solid rgba(255,255,255,.25)
+		padding: 60px 40px
+		@include flexbox
+		align-items: flex-start
+		justify-content: space-between
+		counter-increment: marketingItem
+		position: relative
+		&::before
+			content: counter(marketingItem, decimal-leading-zero)
+			font-size: 16px
+			font-weight: 500
+			line-height: 1.1
+			display: block
+		&::after
+			content: ''
+			position: absolute
+			top: 60px
+			right: 40px
+			width: 24px
+			height: 24px
+			background: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z' fill='white' fill-opacity='0.25'/%3E%3C/svg%3E%0A") no-repeat center
+		&__content
+			max-width: var(--width-content)
+			flex: 1
+			@include flexbox
+			align-items: flex-start
+			flex-direction: column
+			gap: 40px
+			h3
+				max-width: 720px
+				font-size: 42px
+				text-transform: uppercase
+				line-height: 1.2
+				font-weight: 500
+			p
+				max-width: 720px
+				font-size: 18px
+				line-height: 1.4
+				color: var(--color-white-opacity)
+		&:last-child
+			padding-bottom: 0

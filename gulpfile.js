@@ -32,7 +32,11 @@ const ftpConfig = {
 const deploy = () => {
   const conn = vinylFTP.create(ftpConfig);
 
-  return src('app/**/*', { base: 'app', buffer: false }).pipe(conn.dest(process.env.FTP_REMOTE_PATH));
+  return src('app/**/*', { base: 'app', buffer: false })
+    .pipe(conn.dest(process.env.FTP_REMOTE_PATH))
+    .on('end', () => {
+      log(`🚀 Деплой завершен! Сайт доступен по ссылке: ${process.env.SITE_URL}`);
+    });
 };
 
 // Очищаем папку `app`

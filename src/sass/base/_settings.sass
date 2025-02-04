@@ -89,3 +89,19 @@ input, textarea
         left: calc(100% - 48px - 15px)
         background-color: var(--color-white)
         background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M13.4763 9.16658L9.00625 4.69657L10.1848 3.51807L16.6666 9.99992L10.1848 16.4817L9.00625 15.3032L13.4763 10.8332H3.33325V9.16658H13.4763Z' fill='%23FF931E'/%3E%3C/svg%3E%0A")
+
+.main
+  background: var(--color-black)
+
+.home-nav
+  padding-top: 50px
+  ul
+    @include flexbox
+    align-items: center
+    justify-content: space-between
+    font-size: 14px
+    color: var(--color-white-opacity)
+    a
+      transition: .3s
+      &:hover
+        color: var(--color-accent)

@@ -106,6 +106,9 @@ const js = () => {
 const libs_js = () => {
   return src([
     'src/js/vendor/imask.min.js',
+    'src/js/vendor/lenis.min.js',
+    'src/js/vendor/gsap.min.js',
+    'src/js/vendor/ScrollTrigger.min.js',
     // 'src/js/vendor/swiper-bundle.min.js',
     // 'src/js/vendor/fancybox.umd.js'
   ])

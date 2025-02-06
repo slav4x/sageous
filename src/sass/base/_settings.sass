@@ -109,6 +109,8 @@ input, textarea
 
 .main
   background: var(--color-black)
+  position: relative
+  z-index: 50
 
 .home-nav
   padding-top: 50px
@@ -127,6 +129,8 @@ input, textarea
   width: calc(100% - 80px)
   margin: 0 auto
   height: calc(100vh - 80px)
+  transform: scale(0.7)
+  position: relative
   img
     max-width: initial
     width: 100%
@@ -134,3 +138,12 @@ input, textarea
     object-fit: cover
     object-position: center
     border-radius: var(--border-radius-lg)
+    position: absolute
+    top: 0
+    left: 0
+    transition: .3s
+    &:nth-child(2)
+      opacity: 0
+  &.change
+    img:nth-child(2)
+      opacity: 1

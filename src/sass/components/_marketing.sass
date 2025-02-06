@@ -17,6 +17,13 @@
 		border-top: 1px solid rgba(255,255,255,.25)
 		padding: 60px 0
 		position: relative
+		overflow: hidden
+		// &.hidden
+		// 	.marketing-item__content
+		// 		height: 28px
+		// 		overflow: hidden
+		// 		h3
+		// 			font-size: 24px
 		.container
 			@include flexbox
 			align-items: flex-start
@@ -39,10 +46,11 @@
 		&__content
 			max-width: var(--width-content)
 			flex: 1
-			@include flexbox
+			display: flex
 			align-items: flex-start
 			flex-direction: column
 			gap: 40px
+			overflow: hidden
 			h3
 				max-width: 720px
 				font-size: 42px

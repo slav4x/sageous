@@ -148,23 +148,12 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   gsap.to('.approach-image img', {
-    yPercent: -55,
-    ease: 'none',
-    scrollTrigger: {
-      trigger: '.approach',
-      start: 'top top',
-      end: 'bottom bottom',
-      scrub: true,
-    },
-  });
-
-  gsap.to('.approach-image', {
-    marginTop: '-100vh',
+    yPercent: -60,
     ease: 'none',
     scrollTrigger: {
       trigger: '.approach',
       start: 'top bottom',
-      end: 'top top',
+      end: 'bottom bottom',
       scrub: true,
     },
   });

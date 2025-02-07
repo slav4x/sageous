@@ -136,6 +136,61 @@ document.addEventListener('DOMContentLoaded', function () {
     },
   });
 
+  gsap.to('.approach-bg__right, .approach-bg__left', {
+    width: 'calc(100% + 960px)',
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '.approach',
+      start: 'top bottom',
+      end: 'top top',
+      scrub: true,
+    },
+  });
+
+  gsap.to('.approach-image img', {
+    yPercent: -55,
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '.approach',
+      start: 'top top',
+      end: 'bottom bottom',
+      scrub: true,
+    },
+  });
+
+  gsap.to('.approach-image', {
+    marginTop: '-100vh',
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '.approach',
+      start: 'top bottom',
+      end: 'top top',
+      scrub: true,
+    },
+  });
+
+  gsap.to('.approach-bg', {
+    borderRadius: '0 0 40px 40px',
+    scale: '0.96',
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '.approach',
+      start: 'bottom center',
+      end: 'bottom top',
+      scrub: true,
+    },
+  });
+
+  gsap.to('.approach-switch span', {
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '.approach',
+      start: 'top top',
+      onEnter: () => document.querySelector('.approach-switch span').classList.add('active'),
+      onLeaveBack: () => document.querySelector('.approach-switch span').classList.remove('active'),
+    },
+  });
+
   const lenis = new Lenis({
     duration: 2,
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),

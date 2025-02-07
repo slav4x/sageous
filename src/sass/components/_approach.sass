@@ -1,0 +1,153 @@
+.approach
+	min-height: 100vh
+	position: relative
+	will-change: transform
+	&-bg
+		position: sticky
+		top: 0
+		height: 100vh
+		will-change: transform
+		overflow: hidden
+		&__right
+			position: absolute
+			right: 0
+			top: 0
+			height: 50vh
+			width: 0%
+			background: var(--color-accent)
+			transform: translateX(960px)
+			will-change: transform
+			&::before
+				content: ''
+				position: absolute
+				top: 0
+				bottom: 0
+				left: -958px
+				width: 960px
+				background: linear-gradient(-90deg, #FF931E 0%, rgba(255, 147, 30, 0) 100%)
+				border-radius: 999px 0 0 999px
+		&__left
+			position: absolute
+			left: 0
+			top: 50vh
+			height: 50vh
+			width: 0
+			background: var(--color-accent)
+			transform: translateX(-960px)
+			will-change: transform
+			&::before
+				content: ''
+				position: absolute
+				top: 0
+				bottom: 0
+				right: -958px
+				width: 960px
+				background: linear-gradient(90deg, #FF931E 0%, rgba(255, 147, 30, 0) 100%)
+				border-radius: 0 999px 999px 0
+	&-content
+		padding: 0 0 var(--padding-section)
+		margin-top: -100vh
+		will-change: transform
+	&-head
+		position: sticky
+		top: 0
+		height: 100vh
+		padding-top: 60px
+		max-width: 400px
+		will-change: transform
+	&-switch
+		@include flexbox
+		align-items: center
+		gap: 10px
+		margin-bottom: 30px
+		font-size: 16px
+		line-height: 20px
+		font-weight: 500
+		span
+			display: block
+			width: 54px
+			height: 32px
+			border-radius: 99px
+			border: 1px solid var(--color-stroke)
+			background: url(../img/pattern.png) top right / 24px
+			transition: .3s
+			position: relative
+			&::before
+				content: ''
+				position: absolute
+				top: 0
+				bottom: 0
+				left: 10px
+				width: 12px
+				height: 12px
+				border-radius: 100%
+				background: #fff
+				margin: auto 0
+				transition: .3s
+			&.active
+				background-color: var(--color-accent)
+				&::before
+					left: 32px
+	&-list
+		width: 910px
+		margin-left: auto
+		counter-reset: approachItem
+		margin-top: -200px
+	&-item
+		width: 445px
+		height: 460px
+		background: linear-gradient(180deg, rgba(255, 147, 30, 0) 0%, #FF931E 100%), url(../img/pattern.png) top right / 24px, rgba(255, 255, 255, 0.1)
+		backdrop-filter: blur(30px)
+		border-radius: 20px
+		padding: 30px
+		@include flexbox
+		flex-direction: column
+		align-items: flex-start
+		gap: 30px
+		counter-increment: approachItem
+		&::before
+			content: counter(approachItem, decimal-leading-zero)
+			display: block
+			width: 36px
+			height: 24px
+			border: 1px solid rgba(255,255,255,.25)
+			border-radius: 99px
+			text-align: center
+			line-height: 22px
+			font-size: 14px
+			font-weight: 500
+		&__title
+			margin-top: auto
+			font-size: 32px
+			text-transform: uppercase
+			font-weight: 500
+			line-height: 1.1
+		&__text
+			font-size: 18px
+			line-height: 1.4
+			font-weight: 500
+		&:nth-child(2n)
+			margin-left: auto
+		&:not(:first-child)
+			margin-top: -80px
+	&-image
+		position: sticky
+		top: 0
+		height: 100vh
+		margin-top: -80vh
+		img
+			position: absolute
+			top: 50%
+			left: 50%
+			transform: translate(-50%, -50%)
+			max-width: initial
+			z-index: 2
+	&-name
+		position: absolute
+		top: 50%
+		left: 50%
+		transform: translate(-50%, -50%)
+		font-size: 392px
+		text-transform: uppercase
+		font-weight: 500
+		color: rgba(255,255,255,.25)

@@ -43,10 +43,10 @@ document.addEventListener('DOMContentLoaded', function () {
       start: 'top 80%',
       end: 'bottom: 20%',
       scrub: true,
-      onUpdate: (self) => {
-        const image = document.querySelector('.full-image');
-        self.progress >= 1 ? image.classList.add('change') : image.classList.remove('change');
-      },
+      // onUpdate: (self) => {
+      //   const image = document.querySelector('.full-image');
+      //   self.progress >= 1 ? image.classList.add('change') : image.classList.remove('change');
+      // },
     },
   });
 

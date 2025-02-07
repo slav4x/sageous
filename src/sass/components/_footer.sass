@@ -1,7 +1,7 @@
 .footer
 	background: rgba(0,0,0,.35)
-	&-content
-		transform: translateY(-100%)
+	// &-content
+	// 	transform: translateY(-100%)
 	&-main
 		padding: 80px 0
 		.container
@@ -79,3 +79,96 @@
 				transition: .3s
 				&:hover
 					color: var(--color-accent)
+	&-feedback
+		padding: var(--padding-section) 0
+		border-bottom: 1px solid rgba(255, 255, 255, .25)
+		.container
+			@include flexbox
+			align-items: flex-start
+			gap: 40px
+		&__ready
+			@include flexbox
+			align-items: center
+			gap: 10px
+			margin-bottom: 30px
+			font-size: 16px
+			line-height: 20px
+			font-weight: 500
+			span
+				display: block
+				width: 54px
+				height: 32px
+				border-radius: 99px
+				border: 1px solid var(--color-stroke)
+				background: url(../img/pattern.png) top right / 24px
+				transition: .3s
+				position: relative
+				&::before
+					content: ''
+					position: absolute
+					top: 0
+					bottom: 0
+					left: 10px
+					width: 12px
+					height: 12px
+					border-radius: 100%
+					background: #fff
+					margin: auto 0
+					transition: .3s
+				&.active
+					background-color: var(--color-accent)
+					&::before
+						left: 32px
+		&__content
+			max-width: var(--width-content)
+			flex: 1
+			margin-left: auto
+			.title
+				margin-bottom: 80px
+		&__desc
+			margin-bottom: 80px
+			color: var(--color-white-opacity)
+			line-height: 1.4
+		&__form
+			@include flexbox
+			align-items: center
+			gap: 30px 40px
+			.label
+				&:nth-child(1),
+				&:nth-child(2)
+					flex: 1
+			&-footer
+				width: 100%
+				margin-top: 50px
+				@include flexbox
+				align-items: center
+				justify-content: space-between
+			&-captcha
+				width: 100%
+				margin-top: 50px
+		&__sticky
+			position: sticky
+			top: 20px
+			width: 445px
+			img
+				border-radius: 30px
+				margin-bottom: 100px
+		&__contacts
+			@include flexbox
+			align-items: flex-start
+			justify-content: space-between
+			width: 100%
+			li
+				span
+					display: block
+					margin-bottom: 20px
+					font-size: 14px
+					color: var(--color-white-opacity)
+				a
+					display: block
+					font-size: 16px
+					font-weight: 500
+					transition: .2s
+					line-height: 20px
+					&:hover
+						color: var(--color-accent)

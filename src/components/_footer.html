@@ -1,5 +1,77 @@
 <footer class="footer">
 	<div class="footer-content">
+		<div class="footer-feedback">
+			<div class="container">
+				<div class="footer-feedback__sticky">
+					<img src="img/feedback-image.jpg" alt="">
+					<ul class="footer-feedback__contacts">
+						<li>
+							<span>Телефон</span>
+							<a href="tel:+7920343232">+7920343232</a>
+						</li>
+						<li>
+							<span>Email</span>
+							<a href="mailto:sageous@info.com">sageous@info.com</a>
+						</li>
+					</ul>
+				</div>
+				<div class="footer-feedback__content">
+					<div class="footer-feedback__ready"><span></span>100% готовность</div>
+					<h2 class="title">Связаться с нами</h2>
+					<p class="footer-feedback__desc">Мы ценим инновации и блестящие идеи, ошеломительный дизайн и эффективность. И воплощаем это в наших проектах. Позвоните или отправьте нам письмо, чтобы начать совместную работу.</p>
+					<form action="#" method="post" class="footer-feedback__form">
+						<label class="label">
+							<input type="text" class="label-input" placeholder="Ваше имя">
+							<span class="label-text">Ваше имя</span>
+						</label>
+						<label class="label">
+							<input type="tel" class="label-input masked" placeholder="Телефон" required>
+							<span class="label-text">Телефон</span>
+						</label>
+						<label class="label">
+							<input type="email" class="label-input" placeholder="Email">
+							<span class="label-text">Email</span>
+						</label>
+						<div class="footer-feedback__form-captcha captcha">
+							<p class="captcha-text"><b>Вы не робот?</b> Выберите иконку <span class="captcha-choice">лампочки</span>:</p>
+							<div class="captcha-values">
+								<label class="captcha-item">
+									<input type="radio" name="captcha">
+									<span>
+										<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M9.97308 18H11V13H13V18H14.0269C14.1589 16.7984 14.7721 15.8065 15.7676 14.7226C15.8797 14.6006 16.5988 13.8564 16.6841 13.7501C17.5318 12.6931 18 11.385 18 10C18 6.68629 15.3137 4 12 4C8.68629 4 6 6.68629 6 10C6 11.3843 6.46774 12.6917 7.31462 13.7484C7.40004 13.855 8.12081 14.6012 8.23154 14.7218C9.22766 15.8064 9.84103 16.7984 9.97308 18ZM10 20V21H14V20H10ZM5.75395 14.9992C4.65645 13.6297 4 11.8915 4 10C4 5.58172 7.58172 2 12 2C16.4183 2 20 5.58172 20 10C20 11.8925 19.3428 13.6315 18.2443 15.0014C17.624 15.7748 16 17 16 18.5V21C16 22.1046 15.1046 23 14 23H10C8.89543 23 8 22.1046 8 21V18.5C8 17 6.37458 15.7736 5.75395 14.9992Z" fill="currentColor"/>
+										</svg>
+									</span>
+								</label>
+								<label class="captcha-item">
+									<input type="radio" name="captcha">
+									<span>
+										<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM12.366 13.366L8.89708 19.376C9.85124 19.7779 10.8997 20 12 20C12.4622 20 12.9152 19.9608 13.3559 19.8856C13.0984 18.0632 13.3411 16.1601 14.1404 14.3917L12.366 13.366ZM15.8835 15.3974C15.3519 16.6567 15.1671 17.9943 15.2969 19.2905C16.5173 18.7384 17.5737 17.8888 18.3745 16.8346L15.8835 15.3974ZM8.85855 11.3422C7.7265 12.919 6.1993 14.0809 4.49366 14.7699C5.0255 16.2135 5.96211 17.4604 7.16543 18.3745L10.634 12.366L8.85855 11.3422ZM19.9616 11.2111L19.7038 11.3328C18.6197 11.8687 17.6478 12.6548 16.8834 13.6653L19.3756 15.1039C19.7777 14.1495 20 13.1007 20 12C20 11.7338 19.987 11.4706 19.9616 11.2111ZM4 12C4 12.2662 4.013 12.5294 4.03841 12.7889C5.22626 12.2534 6.29168 11.4249 7.11596 10.3355L4.62402 8.89708C4.22214 9.85124 4 10.8997 4 12ZM16.8346 5.62552L13.366 11.634L15.1407 12.6588C16.2731 11.0812 17.8009 9.91878 19.5073 9.22969C19.0134 7.89068 18.1702 6.71922 17.0884 5.82653L16.8346 5.62552ZM12 4C11.5375 4 11.0841 4.03925 10.6431 4.1146C10.9016 5.93748 10.6588 7.8408 9.85915 9.60931L11.634 10.634L15.1029 4.62402C14.1488 4.22214 13.1003 4 12 4ZM8.70313 4.70955L8.51189 4.79845C7.37266 5.35126 6.38436 6.16644 5.62552 7.16543L8.11608 8.60349C8.64798 7.34403 8.83295 6.00607 8.70313 4.70955Z" fill="currentColor"/>
+										</svg>
+									</span>
+								</label>
+								<label class="captcha-item">
+									<input type="radio" name="captcha">
+									<span>
+										<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M5.99805 2C8.68733 2 11.0224 3.51653 12.1947 5.74104C13.372 4.08252 15.3086 3 17.498 3H20.998V5.5C20.998 9.08985 18.0879 12 14.498 12H12.998V13H17.998V20C17.998 21.1046 17.1026 22 15.998 22H7.99805C6.89348 22 5.99805 21.1046 5.99805 20V13H10.998V11H8.99805C5.13205 11 1.99805 7.86599 1.99805 4V2H5.99805ZM15.998 15H7.99805V20H15.998V15ZM18.998 5H17.498C15.0128 5 12.998 7.01472 12.998 9.5V10H14.498C16.9833 10 18.998 7.98528 18.998 5.5V5ZM5.99805 4H3.99805C3.99805 6.76142 6.23662 9 8.99805 9H10.998C10.998 6.23858 8.75947 4 5.99805 4Z" fill="currentColor"/>
+										</svg>
+									</span>
+								</label>
+							</div>
+						</div>
+						<div class="footer-feedback__form-footer">
+							<label class="checkbox">
+								<input type="checkbox" required checked>
+								<span>Согласен с политикой конфиденциальности</span>
+							</label>
+							<button class="btn btn-pattern"><span>отправить</span></button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
 		<div class="footer-main">
 			<div class="container">
 				<a href="/" class="header-logo"><img src="img/svg/logo.svg" alt=""></a>

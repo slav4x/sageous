@@ -30,7 +30,7 @@ input, textarea
   background: transparent
 
 .wrapper
-  overflow: hidden
+  // overflow: hidden
   width: 100%
   margin: 0 auto
 
@@ -51,6 +51,8 @@ input, textarea
   @include flexbox
   align-items: center
   gap: 10px
+  background: transparent
+  color: #fff
   &-pattern
     font-size: 14px
     text-transform: uppercase
@@ -147,3 +149,117 @@ input, textarea
   &.change
     img:nth-child(2)
       opacity: 1
+
+.label
+  display: block
+  position: relative
+  width: 100%
+  &-text
+    display: block
+    position: absolute
+    top: 25px
+    left: 0
+    font-size: 24px
+    font-weight: 500
+    color: rgba(255,255,255,.25)
+    transition: .3s
+  &-input
+    width: 100%
+    height: 80px
+    border-bottom: 1px solid rgba(255,255,255,.25)
+    transition: .3s
+    font-size: 24px
+    font-weight: 500
+    color: #fff
+    padding: 0
+    @include placeholder
+      color: rgba(255,255,255,0)
+    &:focus, &:active
+      border-color: var(--color-accent)
+      & + .label-text
+        font-size: 14px
+        top: 90px
+    &:not(:placeholder-shown) + .label-text
+      font-size: 14px
+      top: 90px
+    &[required] + .label-text::after
+      content: '*'
+      color: var(--color-accent)
+
+.checkbox
+  display: block
+  cursor: pointer
+  input
+    @include visually-hidden
+    &:checked + span
+      &::before
+        border-color: var(--color-accent)
+        background: var(--color-accent)
+      &::after
+        opacity: 1
+  span
+    display: block
+    position: relative
+    font-size: 14px
+    line-height: 24px
+    color: var(--color-white-opacity)
+    padding-left: 34px
+    &::before
+      content: ''
+      position: absolute
+      width: 22px
+      height: 22px
+      top: 1px
+      left: 0
+      border-radius: 6px
+      border: 2px solid rgba(255,255,255,.25)
+      transition: .2s
+    &::after
+      content: ''
+      position: absolute
+      width: 22px
+      height: 22px
+      top: 1px
+      left: 0
+      transition: .2s
+      opacity: 0
+      background: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11.003 15.9996L6.76001 11.7566L8.17401 10.3426L11.003 13.1716L16.659 7.51465L18.074 8.92865L11.003 15.9996Z' fill='white'/%3E%3C/svg%3E%0A") no-repeat center
+
+.captcha
+  @include flexbox
+  align-items: center
+  justify-content: space-between
+  &-text
+    font-size: 18px
+    line-height: 1.1
+    color: var(--color-white-opacity)
+    b
+      font-weight: 500
+      color: var(--color-white)
+    span
+      color: var(--color-accent)
+  &-values
+    @include flexbox
+    align-items: center
+    gap: 5px
+  &-item
+    display: block
+    &:hover span
+      border-color: #fff
+    input
+      @include visually-hidden
+      &:checked + span
+        border-color: var(--color-accent)
+        color: var(--color-accent)
+    span
+      display: block
+      padding: 12px
+      border-radius: 100%
+      border: 1px solid var(--color-stroke)
+      background: url(../img/pattern.png) top right / 24px
+      cursor: pointer
+      transition: .3s
+      svg
+        display: block
+        width: 24px
+        height: 24px

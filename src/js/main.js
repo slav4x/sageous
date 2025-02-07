@@ -50,16 +50,16 @@ document.addEventListener('DOMContentLoaded', function () {
     },
   });
 
-  gsap.to('.footer-content', {
-    yPercent: 100,
-    ease: 'none',
-    scrollTrigger: {
-      trigger: '.footer',
-      start: 'top bottom',
-      end: 'bottom bottom',
-      scrub: true,
-    },
-  });
+  // gsap.to('.footer-content', {
+  //   yPercent: 100,
+  //   ease: 'none',
+  //   scrollTrigger: {
+  //     trigger: '.footer',
+  //     start: 'top bottom',
+  //     end: 'bottom bottom',
+  //     scrub: true,
+  //   },
+  // });
 
   gsap.utils.toArray('.marketing-item').forEach((item) => {
     let content = item.querySelector('.marketing-item__content');
@@ -101,6 +101,16 @@ document.addEventListener('DOMContentLoaded', function () {
       onEnter: () => span.classList.add('active'),
       onLeaveBack: () => span.classList.remove('active'),
     });
+  });
+
+  gsap.to('.footer-feedback__ready span', {
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '.footer',
+      start: 'top top',
+      onEnter: () => document.querySelector('.footer-feedback__ready span').classList.add('active'),
+      onLeaveBack: () => document.querySelector('.footer-feedback__ready span').classList.remove('active'),
+    },
   });
 
   const lenis = new Lenis({

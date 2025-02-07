@@ -113,6 +113,29 @@ document.addEventListener('DOMContentLoaded', function () {
     },
   });
 
+  gsap.to('.exp-image img', {
+    scale: 1.4,
+    filter: 'blur(50px) grayscale(100%)',
+    opacity: 0.2,
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '.exp',
+      start: 'top top',
+      end: 'bottom bottom',
+      scrub: true,
+    },
+  });
+
+  gsap.to('.exp-switch span', {
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '.exp-wrapper',
+      start: 'top top',
+      onEnter: () => document.querySelector('.exp-switch span').classList.add('active'),
+      onLeaveBack: () => document.querySelector('.exp-switch span').classList.remove('active'),
+    },
+  });
+
   const lenis = new Lenis({
     duration: 2,
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),

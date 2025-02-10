@@ -188,6 +188,35 @@
 		</div>
 	</section>
 
+	<section class="clients">
+		<div class="container">
+			<div class="clients-head">
+				<h2 class="clients-title">Наши клиенты</h2>
+				<a href="#" class="btn btn-arrow">Проекты</a>
+			</div>
+			<div class="clients-wrapper">
+				<div class="clients-row">
+					<div class="clients-list">
+						{% include 'components/clients-item.html' %}
+						{% include 'components/clients-item.html' %}
+						{% include 'components/clients-item.html' %}
+						{% include 'components/clients-item.html' %}
+						{% include 'components/clients-item.html' %}
+					</div>
+				</div>
+				<div class="clients-row">
+					<div class="clients-list">
+						{% include 'components/clients-item.html' %}
+						{% include 'components/clients-item.html' %}
+						{% include 'components/clients-item.html' %}
+						{% include 'components/clients-item.html' %}
+						{% include 'components/clients-item.html' %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
 </main>
 
 {% endblock %}

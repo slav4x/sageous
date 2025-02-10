@@ -1,0 +1,53 @@
+.clients
+	padding-bottom: var(--padding-section)
+	overflow: hidden
+	&-head
+		@include flexbox
+		align-items: center
+		justify-content: space-between
+		margin-bottom: 60px
+	&-title
+		font-size: 16px
+		font-weight: 500
+		line-height: 1.1
+	&-wrapper
+		width: 100%
+		display: flex
+		flex-wrap: wrap
+		flex-direction: column
+		gap: 10px
+	&-row
+		display: flex
+		white-space: nowrap
+		position: relative
+		gap: 10px
+	&-list
+		display: flex
+		gap: 10px
+	&-item
+		padding: 45px
+		min-width: 380px
+		height: 310px
+		border: 1px solid var(--color-stroke)
+		background: url(../img/pattern.png) top right / 24px
+		border-radius: 30px
+		position: relative
+		overflow: hidden
+		@include flexbox
+		align-items: center
+		justify-content: center
+		&__name
+			position: absolute
+			bottom: 15px
+			left: 15px
+			font-size: 14px
+			color: var(--color-white-opacity)
+			line-height: 1.1
+			font-weight: 500
+			background: var(--color-black)
+			border-radius: 99px
+			border: 1px solid var(--color-stroke)
+			padding: 8px 10px
+			line-height: 16px
+		&__logo img
+			max-height: 100%

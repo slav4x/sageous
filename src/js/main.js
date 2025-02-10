@@ -192,4 +192,38 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   requestAnimationFrame(raf);
+
+  function createInfiniteScroll(row, index) {
+    const list = row.querySelector('.clients-list');
+    const clone = list.cloneNode(true);
+    row.appendChild(clone);
+
+    const totalWidth = list.offsetWidth;
+    const direction = index % 2 === 0 ? -1 : 1;
+
+    gsap.set([list, clone], {});
+
+    const scrollTween = gsap.to(row, {
+      x: direction * totalWidth + 'px',
+      duration: 60,
+      ease: 'none',
+      repeat: -1,
+      paused: true,
+      modifiers: {
+        x: gsap.utils.unitize((x) => (direction > 0 ? -totalWidth + (parseFloat(x) % totalWidth) : parseFloat(x) % totalWidth)),
+      },
+    });
+
+    ScrollTrigger.create({
+      trigger: '.clients',
+      start: 'top bottom',
+      end: 'bottom top',
+      onEnter: () => scrollTween.play(),
+      onLeave: () => scrollTween.pause(),
+      onEnterBack: () => scrollTween.play(),
+      onLeaveBack: () => scrollTween.pause(),
+    });
+  }
+
+  document.querySelectorAll('.clients-row').forEach(createInfiniteScroll);
 });

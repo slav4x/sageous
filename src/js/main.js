@@ -226,4 +226,24 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   document.querySelectorAll('.clients-row').forEach(createInfiniteScroll);
+
+  document.querySelectorAll('.approach-item').forEach((item) => {
+    const title = item.querySelector('.approach-item__title');
+    const content = item.querySelector('.approach-item__content');
+
+    if (title && content) {
+      const titleHeight = title.offsetHeight + 'px';
+      const contentHeight = content.scrollHeight + 'px';
+
+      content.style.height = titleHeight;
+
+      item.addEventListener('mouseenter', () => {
+        content.style.height = contentHeight;
+      });
+
+      item.addEventListener('mouseleave', () => {
+        content.style.height = titleHeight;
+      });
+    }
+  });
 });

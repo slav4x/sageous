@@ -93,11 +93,11 @@
 		margin-left: auto
 		counter-reset: approachItem
 		margin-top: -200px
+		position: relative
+		z-index: 10
 	&-item
 		width: 445px
 		height: 460px
-		background: linear-gradient(180deg, rgba(255, 147, 30, 0) 0%, #FF931E 100%), url(../img/pattern.png) top right / 24px, rgba(255, 255, 255, 0.1)
-		backdrop-filter: blur(30px)
 		border-radius: 20px
 		padding: 30px
 		@include flexbox
@@ -105,31 +105,66 @@
 		align-items: flex-start
 		gap: 30px
 		counter-increment: approachItem
+		position: relative
+		overflow: hidden
 		&::before
-			content: counter(approachItem, decimal-leading-zero)
-			display: block
-			width: 36px
-			height: 24px
-			border: 1px solid rgba(255,255,255,.25)
-			border-radius: 99px
-			text-align: center
-			line-height: 22px
-			font-size: 14px
-			font-weight: 500
-		&__title
+			content: ''
+			position: absolute
+			top: 0
+			left: 0
+			right: 0
+			bottom: 0
+			background: url(../img/pattern.png) top right / 24px, rgba(255, 255, 255, 0.1)
+			backdrop-filter: blur(30px)
+		&::after
+			content: ''
+			position: absolute
+			z-index: -1
+			top: 0
+			left: 0
+			right: 0
+			bottom: 0
+			background: linear-gradient(180deg, rgba(255, 147, 30, 0) 0%, #FF931E 100%)
+			opacity: 0
+			transition: .3s
+		&__number
+			position: relative
+			z-index: 5
+			&::before
+				content: counter(approachItem, decimal-leading-zero)
+				display: block
+				width: 36px
+				height: 24px
+				border: 1px solid rgba(255,255,255,.25)
+				border-radius: 99px
+				text-align: center
+				line-height: 22px
+				font-size: 14px
+				font-weight: 500
+		&__content
 			margin-top: auto
+			transition: .2s
+		&__title
 			font-size: 32px
 			text-transform: uppercase
 			font-weight: 500
 			line-height: 1.1
+			position: relative
+			z-index: 5
+			margin-bottom: 30px
 		&__text
 			font-size: 18px
 			line-height: 1.4
 			font-weight: 500
+			position: relative
+			z-index: 5
 		&:nth-child(2n)
 			margin-left: auto
 		&:not(:first-child)
 			margin-top: -80px
+		&:hover
+			&::after
+				opacity: 1
 	&-image
 		position: sticky
 		top: 0

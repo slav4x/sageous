@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   gsap.config({
     autoSleep: 60,
-    force3D: false,
+    force3D: true,
     nullTargetWarn: false,
   });
 

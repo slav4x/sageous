@@ -106,3 +106,68 @@
 							opacity: 1
 				&:last-child a
 					border: 0
+	&-single
+		padding-bottom: var(--padding-section)
+		border-bottom: 1px solid rgba(255,255,255,.25)
+		.breadcrumbs
+			margin-bottom: 30px
+		.marquee-text
+			font-size: var(--font-size-xxl)
+			text-transform: uppercase
+			font-weight: 500
+			line-height: 200px
+		.marquee-container
+			height: 200px
+		&__row
+			@include flexbox
+			align-items: flex-start
+			justify-content: space-between
+			margin-top: 140px
+		&__nav
+			@include flexbox
+			flex-direction: column
+			align-items: flex-start
+			gap: 10px
+			font-size: 18px
+			line-height: 1.4
+			color: var(--color-white-opacity)
+			li
+				a
+					transition: .2s
+					display: block
+					position: relative
+					&::before
+						content: ''
+						position: absolute
+						top: 0
+						bottom: 0
+						left: -16px
+						width: 0px
+						height: 0px
+						border-radius: 100%
+						background: var(--color-white)
+						margin: auto 0
+						transition: .2s
+						pointer-events: none
+				&:hover a,
+				&.active a
+					color: var(--color-white)
+					transform: translateX(16px)
+					&::before
+						width: 6px
+						height: 6px
+
+		&__content
+			max-width: var(--width-content)
+			flex: 1
+			display: flex
+			align-items: flex-start
+			flex-direction: column
+			gap: 80px
+		&__text
+			display: flex
+			align-items: flex-start
+			flex-direction: column
+			gap: 40px
+			line-height: 1.4
+			color: var(--color-white-opacity)

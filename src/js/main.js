@@ -291,4 +291,38 @@ document.addEventListener('DOMContentLoaded', function () {
       scrub: true,
     },
   });
+
+  const stepsSwitch = document.querySelector('.services-steps__switch span');
+  gsap.to('.services-steps__switch span', {
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '.services-steps',
+      start: 'top top',
+      onEnter: () => stepsSwitch?.classList.add('active'),
+      onLeaveBack: () => stepsSwitch?.classList.remove('active'),
+    },
+  });
+
+  const cards = gsap.utils.toArray('.services-steps__card');
+  const step = 0.05;
+  const totalCards = cards.length;
+
+  cards.forEach((card, i) => {
+    const finalScale = 1 - (totalCards - 1 - i) * step;
+    card.style.top = `${20 + i * 20}px`;
+    card.style.marginBottom = `${(totalCards - 1 - i) * 20}px`;
+    card.style.marginTop = `${(totalCards - 1 - i) * -20 - 20}px`;
+    card.style.zIndex = i + 1;
+
+    gsap.to(card, {
+      scrollTrigger: {
+        trigger: card,
+        start: 'top top+=20',
+        end: () => `top+=${card.offsetHeight} top`,
+        scrub: true,
+      },
+      scale: finalScale,
+      opacity: i === totalCards - 1 ? 1 : 0.5,
+    });
+  });
 });

@@ -171,3 +171,90 @@
 			gap: 40px
 			line-height: 1.4
 			color: var(--color-white-opacity)
+	&-steps
+		padding: var(--padding-section) 0
+		border-bottom: 1px solid rgba(255,255,255,.25)
+		&__row
+			@include flexbox
+			align-items: flex-start
+		&__sidebar
+			width: calc(100% - var(--width-content))
+			position: sticky
+			top: 20px
+		&__switch
+			@include flexbox
+			align-items: center
+			gap: 10px
+			margin-bottom: 20px
+			font-size: 16px
+			line-height: 20px
+			font-weight: 500
+			span
+				display: block
+				width: 54px
+				height: 32px
+				border-radius: 99px
+				border: 1px solid var(--color-stroke)
+				background: url(../img/pattern.png) top right / 24px
+				transition: .3s
+				position: relative
+				&::before
+					content: ''
+					position: absolute
+					top: 0
+					bottom: 0
+					left: 10px
+					width: 12px
+					height: 12px
+					border-radius: 100%
+					background: #fff
+					margin: auto 0
+					transition: .3s
+				&.active
+					background-color: var(--color-accent)
+					&::before
+						left: 32px
+		&__main
+			max-width: var(--width-content)
+			flex: 1
+			display: flex
+			align-items: flex-start
+			flex-direction: column
+			gap: 20px
+			counter-reset: stepsItem
+		&__card
+			position: sticky
+			top: 20px
+			@include flexbox
+			flex-direction: column
+			align-items: flex-start
+			gap: 30px
+			padding: 40px
+			counter-increment: stepsItem
+			height: 400px
+			border-radius: var(--border-radius)
+			background: url(../img/pattern.png) top right / 24px, #191919
+			width: 100%
+			will-change: transform
+			transform: scale(1)
+			transform-origin: top center
+			&::before
+				content: counter(stepsItem, decimal-leading-zero)
+				display: block
+				width: 36px
+				height: 24px
+				border: 1px solid rgba(255,255,255,.25)
+				border-radius: 99px
+				text-align: center
+				line-height: 22px
+				font-size: 14px
+				font-weight: 500
+			h3
+				margin-top: auto
+				text-transform: uppercase
+				font-size: 32px
+				font-weight: 500
+				line-height: 1.1
+			p
+				line-height: 1.4
+				color: var(--color-white-opacity)

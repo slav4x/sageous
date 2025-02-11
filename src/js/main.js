@@ -22,6 +22,12 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
+  gsap.config({
+    autoSleep: 60,
+    force3D: false,
+    nullTargetWarn: false,
+  });
+
   gsap.registerPlugin(ScrollTrigger);
 
   gsap.to('.hero', {
@@ -103,13 +109,14 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
+  const footerFeedbackReady = document.querySelector('.footer-feedback__ready span');
   gsap.to('.footer-feedback__ready span', {
     ease: 'none',
     scrollTrigger: {
       trigger: '.footer',
       start: 'top top',
-      onEnter: () => document.querySelector('.footer-feedback__ready span').classList.add('active'),
-      onLeaveBack: () => document.querySelector('.footer-feedback__ready span').classList.remove('active'),
+      onEnter: () => footerFeedbackReady?.classList.add('active'),
+      onLeaveBack: () => footerFeedbackReady?.classList.remove('active'),
     },
   });
 
@@ -126,13 +133,14 @@ document.addEventListener('DOMContentLoaded', function () {
     },
   });
 
+  const expSwitch = document.querySelector('.exp-switch span');
   gsap.to('.exp-switch span', {
     ease: 'none',
     scrollTrigger: {
       trigger: '.exp-wrapper',
       start: 'top top',
-      onEnter: () => document.querySelector('.exp-switch span').classList.add('active'),
-      onLeaveBack: () => document.querySelector('.exp-switch span').classList.remove('active'),
+      onEnter: () => expSwitch?.classList.add('active'),
+      onLeaveBack: () => expSwitch?.classList.remove('active'),
     },
   });
 
@@ -170,13 +178,14 @@ document.addEventListener('DOMContentLoaded', function () {
     },
   });
 
+  const approachSwitch = document.querySelector('.approach-switch span');
   gsap.to('.approach-switch span', {
     ease: 'none',
     scrollTrigger: {
       trigger: '.approach',
       start: 'top top',
-      onEnter: () => document.querySelector('.approach-switch span').classList.add('active'),
-      onLeaveBack: () => document.querySelector('.approach-switch span').classList.remove('active'),
+      onEnter: () => approachSwitch?.classList.add('active'),
+      onLeaveBack: () => approachSwitch?.classList.remove('active'),
     },
   });
 

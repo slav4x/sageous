@@ -255,4 +255,40 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     }
   });
+
+  const container = document.querySelector('.marquee-container');
+  const text = document.querySelector('.marquee-text');
+
+  if (text.offsetWidth > container.offsetWidth) {
+    const textWidth = text.offsetWidth + 40;
+    const containerWidth = container.offsetWidth + 40;
+    const speed = 150;
+
+    function animate() {
+      gsap.to(text, {
+        x: -textWidth,
+        duration: textWidth / speed,
+        ease: 'linear',
+        onComplete: () => {
+          gsap.set(text, { x: containerWidth });
+          animate();
+        },
+      });
+    }
+
+    gsap.set(text, { x: 0 });
+    animate();
+  }
+
+  gsap.to('.full-image-2', {
+    width: 'calc(100% - 80px)',
+    borderRadius: '40px',
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '.full-image-2',
+      start: 'top 50%',
+      end: 'bottom: 20%',
+      scrub: true,
+    },
+  });
 });

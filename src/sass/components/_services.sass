@@ -8,3 +8,101 @@
 			line-height: 200px
 		.marquee-container
 			height: 200px
+	&-category
+		padding-bottom: var(--padding-section)
+		.header
+			margin-bottom: 60px
+			.container
+				padding: 0
+			&-logo
+				display: none
+		.breadcrumbs
+			margin-bottom: 46px
+		.container
+			@include flexbox
+			align-items: flex-start
+		&__sticky
+			width: 775px
+			height: calc(100vh - 40px)
+			position: sticky
+			top: 20px
+			margin-top: 20px
+			background: #1A1A1A
+			border-radius: var(--border-radius-lg)
+			overflow: hidden
+			padding: 60px
+			@include flexbox
+			flex-direction: column
+			align-items: flex-start
+			justify-content: flex-end
+			h1
+				position: relative
+				z-index: 5
+				font-size: 52px
+				font-weight: 500
+				text-transform: uppercase
+				line-height: 1.2
+			img
+				position: absolute
+				top: 0
+				left: 0
+				right: 0
+				bottom: 0
+				object-fit: cover
+				object-position: center
+				width: 100%
+				height: 100%
+				max-width: initial
+		&__content
+			width: calc(100% - 775px - 20px)
+			margin-left: auto
+		&__nav
+			border: 1px solid rgba(255,255,255,.25)
+			border-radius: var(--border-radius-lg)
+			overflow: hidden
+			li
+				display: block
+				a
+					display: block
+					padding: 60px 40px
+					width: 100%
+					font-size: 36px
+					font-weight: 500
+					text-transform: uppercase
+					line-height: 1.2
+					border-bottom: 1px solid rgba(255,255,255,.25)
+					transition: .3s
+					position: relative
+					@include flexbox
+					align-items: flex-start
+					gap: 40px
+					&::before
+						content: ''
+						position: absolute
+						top: 0
+						left: 0
+						right: 0
+						bottom: 0
+						background: url(../img/pattern.png) top right / 24px
+						transition: .3s
+						opacity: 0
+					&::after
+						content: ''
+						display: block
+						width: 48px
+						height: 32px
+						border-radius: 99px
+						background-color: var(--color-accent)
+						background-repeat: no-repeat
+						background-position: center
+						background-image: url("data:image/svg+xml,%3Csvg width='14' height='14' viewBox='0 0 14 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9.43311 6.41661L6.30411 3.2876L7.12906 2.46265L11.6663 6.99994L7.12906 11.5372L6.30411 10.7122L9.43311 7.58327H2.33301V6.41661H9.43311Z' fill='white'/%3E%3C/svg%3E%0A")
+						opacity: 0
+						transition: .3s
+					p
+						flex: 1
+					&:hover
+						color: var(--color-accent)
+						&::before, &::after
+							opacity: 1
+				&:last-child a
+					border: 0

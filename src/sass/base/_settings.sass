@@ -294,3 +294,33 @@ input, textarea
   position: absolute
   left: 0
   will-change: transform
+
+.breadcrumbs
+  display: block
+  font-size: 14px
+  line-height: 20px
+  color: var(--color-white-opacity)
+  li
+    display: inline
+    &::after
+      content: ''
+      display: inline-block
+      vertical-align: middle
+      width: 20px
+      height: 20px
+      margin: 0 10px
+      background: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10.9764 10.0006L6.85156 5.87577L8.03008 4.69727L13.3334 10.0006L8.03008 15.3038L6.85156 14.1253L10.9764 10.0006Z' fill='white' fill-opacity='0.25'/%3E%3C/svg%3E%0A") no-repeat center
+    a
+      padding: 6px 0
+      border-radius: 99px
+      transition: .3s
+      &:hover
+        color: var(--color-white)
+    &:last-child
+      a
+        border: 1px solid var(--color-stroke)
+        background: url(../img/pattern.png) top right / 24px
+        color: var(--color-white)
+        padding: 6px 10px
+      &::after
+        display: none

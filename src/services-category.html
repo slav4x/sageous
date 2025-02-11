@@ -1,0 +1,35 @@
+{% extends 'components/_layout.html' %}
+{% set site_title = 'Услуги (категория)' %}
+
+{% block content %}
+
+<main class="main">
+
+	<section class="services-category">
+		<div class="container">
+			<div class="services-category__sticky">
+				<img src="img/services-category.jpg" alt="">
+				<h1>Дизайн</h1>
+			</div>
+			<div class="services-category__content">
+				{% include 'components/_header.html' %}
+				<ul class="breadcrumbs">
+					<li><a href="#">Главная</a></li>
+					<li><a href="#">Услуги</a></li>
+					<li><a href="#">Вы здесь</a></li>
+				</ul>
+				<ul class="services-category__nav">
+					<li><a href="#"><p>Веб-дизайн</p></a></li>
+					<li><a href="#"><p>Дизайн пользовательского интерфейса (UI)</p></a></li>
+					<li><a href="#"><p>Дизайн пользовательского опыта (UX)</p></a></li>
+					<li><a href="#"><p>Дизайн презентаций</p></a></li>
+					<li><a href="#"><p>Иконографика</p></a></li>
+					<li><a href="#"><p>Дизайн социальных медиа</p></a></li>
+				</ul>
+			</div>
+		</div>
+	</section>	
+
+</main>
+
+{% endblock %}

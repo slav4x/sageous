@@ -256,27 +256,27 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  const container = document.querySelector('.marquee-container');
-  const text = document.querySelector('.marquee-text');
+  const marqueeContainer = document.querySelector('.marquee-container');
+  const marqueeText = document.querySelector('.marquee-text');
 
-  if (text.offsetWidth > container.offsetWidth) {
-    const textWidth = text.offsetWidth + 40;
-    const containerWidth = container.offsetWidth + 40;
+  if (marqueeContainer && marqueeText.offsetWidth > marqueeContainer.offsetWidth) {
+    const textWidth = marqueeText.offsetWidth + 40;
+    const containerWidth = marqueeContainer.offsetWidth + 40;
     const speed = 150;
 
     function animate() {
-      gsap.to(text, {
+      gsap.to(marqueeText, {
         x: -textWidth,
         duration: textWidth / speed,
         ease: 'linear',
         onComplete: () => {
-          gsap.set(text, { x: containerWidth });
+          gsap.set(marqueeText, { x: containerWidth });
           animate();
         },
       });
     }
 
-    gsap.set(text, { x: 0 });
+    gsap.set(marqueeText, { x: 0 });
     animate();
   }
 

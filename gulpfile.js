@@ -109,7 +109,7 @@ const libs_js = () => {
     'src/js/vendor/lenis.min.js',
     'src/js/vendor/gsap.min.js',
     'src/js/vendor/ScrollTrigger.min.js',
-    // 'src/js/vendor/swiper-bundle.min.js',
+    'src/js/vendor/swiper-bundle.min.js',
     // 'src/js/vendor/fancybox.umd.js'
   ])
     .pipe(gulpIf(isProd, terser()))

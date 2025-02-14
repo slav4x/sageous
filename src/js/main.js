@@ -336,4 +336,15 @@ document.addEventListener('DOMContentLoaded', function () {
       onLeaveBack: () => servicesProjectsSwitch?.classList.remove('active'),
     },
   });
+
+  const projectsCarousel = new Swiper('.projects-slider__carousel', {
+    spaceBetween: 20,
+    pagination: {
+      el: '.projects-slider__pagination',
+    },
+    navigation: {
+      nextEl: '.projects-slider__arrow-next',
+      prevEl: '.projects-slider__arrow-prev',
+    },
+  });
 });

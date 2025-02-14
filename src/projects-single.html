@@ -1,0 +1,145 @@
+{% extends 'components/_layout.html' %}
+{% set site_title = 'Проекты (страница)' %}
+
+{% block content %}
+
+<main class="main">
+
+	{% include 'components/_header.html' %}
+
+	<section class="projects-single">
+		<div class="container">
+			<ul class="breadcrumbs">
+				<li><a href="#">Главная</a></li>
+				<li><a href="#">Проекты</a></li>
+				<li><a href="#">Вы здесь</a></li>
+			</ul>
+			<h1 class="title">project name</h1>
+			<div class="projects-row">
+				<div class="projects-left">
+					<div class="projects-single__services">
+						<p>Услуги</p>
+						<ul>
+							<li><a href="#">Веб-дизайн</a></li>
+							<li><a href="#">Дизайн презентации</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="projects-right">
+					<div class="projects-text">
+						<p>Мы исследуем существующие методы, разрабатываем новые технологии и активно вовлекаем местные сообщества в процесс. Наша цель — не только уменьшить негативное воздействие на природу, но и повысить осведомленность жителей о важности ответственного обращения с отходами. Присоединяйтесь к нам в этом важном деле и узнайте, как вы можете внести свой вклад в создание чистого и устойчивого будущего для нашего города!</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="full-image-2">
+		<img src="img/projects-image.jpg" alt="">
+	</section>
+
+	<section class="projects-section">
+		<div class="container">
+			<div class="projects-row">
+				<div class="projects-left">
+					<h2 class="title-md">задачи проекта</h2>
+				</div>
+				<div class="projects-right">
+					<div class="projects-text">
+						<p>Основная цель нашего проекта — разработка эффективной системы управления отходами, которая способствует снижению их негативного воздействия на окружающую среду. Мы стремимся исследовать существующие методы утилизации и адаптировать их под нужды urban-районов, внедряя инновационные технологии, которые позволят улучшить процесс сортировки и переработки отходов.</p>
+						<p>Важной задачей также является образование и вовлечение местных сообществ в процесс устойчивого управления отходами. Мы планируем организовать обучающие программы и семинары, чтобы повысить уровень осведомленности населения о значении правильной утилизации и переработки, а также создать устойчивую инфраструктуру, способствующую этим целям.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="projects-section">
+		<div class="container">
+			<div class="projects-row">
+				<div class="projects-left">
+					<h2 class="title-md">процесс</h2>
+				</div>
+				<div class="projects-right">
+					<div class="projects-text">
+						<p>Важной задачей также является образование и вовлечение местных сообществ в процесс устойчивого управления отходами. Мы планируем организовать обучающие программы и семинары, чтобы повысить уровень осведомленности населения о значении правильной утилизации и переработки, а также создать устойчивую инфраструктуру, способствующую этим целям.</p>
+					</div>
+					<ul class="projects-list">
+						<li>Исследование</li>
+						<li>Сбор данных</li>
+						<li>Разработка технологий</li>
+						<li>Партнерство</li>
+						<li>Обучение и вовлечение</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="projects-slider">
+		<div class="container">
+			<div class="projects-slider__carousel">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide"><div class="projects-slider__item"><img src="img/projects-image.jpg"></div></div>
+					<div class="swiper-slide"><div class="projects-slider__item"><img src="img/projects-image.jpg"></div></div>
+					<div class="swiper-slide"><div class="projects-slider__item"><img src="img/projects-image.jpg"></div></div>
+					<div class="swiper-slide"><div class="projects-slider__item"><img src="img/projects-image.jpg"></div></div>
+					<div class="swiper-slide"><div class="projects-slider__item"><img src="img/projects-image.jpg"></div></div>
+				</div>
+			</div>
+			<div class="projects-slider__bottom">
+				<div class="projects-slider__bottom-col">
+					<div class="projects-slider__pagination"></div>
+				</div>
+				<div class="projects-slider__bottom-col">
+					<div class="projects-slider__text">Фото проекта</div>
+				</div>
+				<div class="projects-slider__bottom-col">
+					<div class="projects-slider__control">
+						<div class="projects-slider__arrow projects-slider__arrow-prev"></div>
+						<div class="projects-slider__arrow projects-slider__arrow-next"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="projects-section">
+		<div class="container">
+			<div class="projects-row">
+				<div class="projects-left">
+					<h2 class="title-md">результат</h2>
+				</div>
+				<div class="projects-right">
+					<div class="projects-text">
+						<p>Важной задачей также является образование и вовлечение местных сообществ в процесс устойчивого управления отходами. Мы планируем организовать обучающие программы и семинары, чтобы повысить уровень осведомленности населения о значении правильной утилизации и переработки, а также создать устойчивую инфраструктуру, способствующую этим целям.</p>
+					</div>
+					<ul class="projects-list">
+						<li>Повышение уровня сортировки отходов</li>
+						<li>Создание устойчивой инфраструктуры</li>
+						<li>Уменьшение количества отправляемых на свалки отходов</li>
+						<li>Установление партнерств</li>
+						<li>Улучшение экологической осведомленности</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	...
+
+	<section class="services-projects">
+		<div class="container">
+			<h2 class="title">Похожие проекты</h2>
+			<div class="services-projects__grid">
+				{% set sm = true %}
+				{% include 'components/projects-item.html' %}
+				{% include 'components/projects-item.html' %}
+				{% include 'components/projects-item.html' %}
+			</div>
+		</div>
+	</section>
+
+</main>
+
+{% endblock %}

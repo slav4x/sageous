@@ -125,3 +125,151 @@
 					background: url("data:image/svg+xml,%3Csvg width='52' height='52' viewBox='0 0 52 52' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 3H22V22H3L3 30H22V49H30V30H49V22H30V3Z' fill='white'/%3E%3C/svg%3E%0A") no-repeat center
 	&-category
 		margin-bottom: 80px
+	&-single
+		padding-bottom: var(--padding-section)
+		.breadcrumbs
+			margin-bottom: 30px
+		.title
+			margin-bottom: 140px
+		&__services
+			p
+				font-size: 14px
+				color: var(--color-white-opacity)
+				margin-bottom: 20px
+			ul
+				@include flexbox
+				flex-direction: column
+				align-items: flex-start
+				gap: 10px
+				li
+					a
+						display: block
+						font-size: 14px
+						padding: 6px 10px
+						line-height: 20px
+						border-radius: 99px
+						border: 1px solid var(--color-stroke)
+						background: rgba(255,255,255,.05) url(../img/pattern.png) top right / 24px
+						transition: .3s
+						&:hover
+							border-color: var(--color-accent)
+							color: var(--color-accent)
+
+	&-row
+		@include flexbox
+		align-items: flex-start
+		justify-content: space-between
+		gap: 40px
+		width: 100%
+	&-left
+		width: calc(100% - var(--width-content) - 40px)
+	&-right
+		width: var(--width-content)
+		@include flexbox
+		flex-direction: column
+		gap: 80px
+	&-text
+		@include flexbox
+		flex-direction: column
+		gap: 40px
+		color: var(--color-white-opacity)
+		line-height: 1.4
+		width: 100%
+	&-section
+		padding: var(--padding-section) 0
+		& + .projects-section
+			border-top: 1px solid rgba(255,255,255,.25)
+	&-list
+		@include flexbox
+		align-items: flex-start
+		gap: 20px 40px
+		li
+			width: calc(100% / 2 - 20px)
+			font-size: 18px
+			font-weight: 500
+			line-height: 24px
+			position: relative
+			padding-left: 24px
+			transition: .2s
+			&::before
+				content: ''
+				width: 4px
+				height: 4px
+				border-radius: 100%
+				background: rgba(255,255,255,.25)
+				position: absolute
+				top: 10px
+				left: 0
+				transition: .2s
+	&-slider
+		overflow: hidden
+		&__carousel
+			max-width: 1375px
+			width: 100%
+		&__item
+			width: 100%
+			height: 780px
+			border-radius: var(--border-radius-lg)
+			overflow: hidden
+			background: #191919 url(../img/pattern.png) top right / 24px
+			img
+				width: 100%
+				height: 100%
+				object-fit: cover
+				object-position: center
+				max-width: initial
+		&__bottom
+			@include flexbox
+			align-items: center
+			justify-content: space-between
+			margin-top: 60px
+			&-col
+				flex: 1
+				@include flexbox
+		&__text
+			font-size: 14px
+			line-height: 1.4
+			color: var(--color-white-opacity)
+			text-align: center
+			width: 100%
+		&__pagination
+			width: auto !important
+			@include flexbox
+			align-items: center
+			gap: 10px
+			padding: 14px
+			background: url(../img/pattern.png) top right / 24px
+			border: 1px solid var(--color-stroke)
+			border-radius: 99px
+			.swiper-pagination-bullet
+				width: 6px
+				height: 6px
+				margin: 0 !important
+				background: #fff
+				opacity: 0.25
+				transition: .2s
+			.swiper-pagination-bullet-active
+				opacity: 1
+		&__control
+			@include flexbox
+			align-items: center
+			gap: 20px
+			justify-content: flex-end
+			width: 100%
+		&__arrow
+			width: 48px
+			height: 32px
+			border-radius: 99px
+			border: 1px solid var(--color-accent)
+			transition: .3s
+			background: url("data:image/svg+xml,%3Csvg width='14' height='14' viewBox='0 0 14 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9.43347 6.41685L6.30447 3.28785L7.12942 2.46289L11.6667 7.00019L7.12942 11.5374L6.30447 10.7125L9.43347 7.58352H2.33337V6.41685H9.43347Z' fill='white'/%3E%3C/svg%3E%0A") no-repeat center
+			cursor: pointer
+			&-prev
+				transform: rotate(180deg)
+			&:hover
+				background-color: var(--color-accent)
+			&.swiper-button-disabled
+				border-color: #fff
+				opacity: 0.15
+				background-color: transparent !important
+				cursor: not-allowed

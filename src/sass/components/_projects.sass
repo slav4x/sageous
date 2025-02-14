@@ -1,0 +1,62 @@
+.projects
+	&-item
+		position: relative
+		&__image
+			width: 100%
+			height: 510px
+			@include flexbox
+			justify-content: flex-end
+			align-items: flex-end
+			position: relative
+			overflow: hidden
+			border-radius: var(--border-radius)
+			padding: 20px
+			margin-bottom: 40px
+			img
+				position: absolute
+				top: 0
+				left: 0
+				width: 100%
+				height: 100%
+				object-fit: cover
+				object-position: center
+				transition: .3s
+			ul
+				@include flexbox
+				flex-direction: column
+				align-items: flex-end
+				gap: 10px
+				position: relative
+				z-index: 10
+				li
+					font-size: 14px
+					padding: 6px 10px
+					line-height: 20px
+					border-radius: 99px
+					border: 1px solid var(--color-stroke)
+					background: url(../img/pattern.png) top right / 24px
+					backdrop-filter: blur(10px)
+		&__name
+			font-size: 24px
+			font-weight: 500
+			display: block
+			transition: .3s
+			&::before
+				content: ''
+				position: absolute
+				top: 0
+				left: 0
+				right: 0
+				bottom: 0
+				z-index: 20
+		&__desc
+			margin-top: 10px
+			font-size: 14px
+			color: var(--color-white-opacity)
+		&-sm .projects-item__image
+			height: 330px
+		&:hover
+			.projects-item__name
+				color: var(--color-accent)
+			.projects-item__image img
+				transform: scale(1.06)

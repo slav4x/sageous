@@ -1,0 +1,28 @@
+{% extends 'components/_layout.html' %}
+{% set site_title = 'Проекты (категория)' %}
+
+{% block content %}
+
+<main class="main">
+
+	{% include 'components/_header.html' %}
+
+	<section class="projects-category">
+		<div class="container">
+			<h1 class="title">Веб-дизайн</h1>
+		</div>
+	</section>
+
+	<section class="projects">
+		<div class="container">
+			<div class="projects-grid">
+				{% include 'components/projects-item.html' %}
+				{% include 'components/projects-item.html' %}
+				{% include 'components/projects-item.html' %}
+			</div>
+		</div>
+	</section>
+
+</main>
+
+{% endblock %}

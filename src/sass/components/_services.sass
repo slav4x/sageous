@@ -334,3 +334,15 @@
 						color: var(--color-accent)
 						&::before
 							background: var(--color-accent)
+	&-form
+		.container
+			@include flexbox
+			align-items: flex-start
+		&__content
+			max-width: var(--width-content)
+			flex: 1
+			margin-left: auto
+		&__sticky
+			position: sticky
+			top: 20px
+			width: 600px

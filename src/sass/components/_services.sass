@@ -298,3 +298,39 @@
 			grid-template-columns: repeat(3, 1fr)
 			gap: 40px 20px
 			margin-top: 80px
+	&-similar
+		padding: var(--padding-section) 0
+		border-top: 1px solid rgba(255,255,255,.25)
+		.container
+			@include flexbox
+			align-items: flex-start
+		&__list
+			max-width: var(--width-content)
+			flex: 1
+			margin-left: auto
+			@include flexbox
+			align-items: flex-start
+			gap: 20px 40px
+			li
+				width: calc(100% / 2 - 20px)
+				a
+					font-size: 18px
+					font-weight: 500
+					line-height: 24px
+					position: relative
+					padding-left: 24px
+					transition: .2s
+					&::before
+						content: ''
+						width: 4px
+						height: 4px
+						border-radius: 100%
+						background: rgba(255,255,255,.25)
+						position: absolute
+						top: 10px
+						left: 0
+						transition: .2s
+					&:hover
+						color: var(--color-accent)
+						&::before
+							background: var(--color-accent)

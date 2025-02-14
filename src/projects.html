@@ -1,0 +1,46 @@
+{% extends 'components/_layout.html' %}
+{% set site_title = 'Проекты' %}
+
+{% block content %}
+
+<main class="main">
+
+	{% include 'components/_header.html' %}
+
+	<section class="projects-title">
+		<div class="container">
+			<div class="marquee-container">
+				<h1 class="marquee-text">Проекты</h1>
+			</div>
+			<div class="projects-title__counter">
+				<h3>30</h3>
+				<p>Lorem ipsum успешных кейсов</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="projects">
+		<div class="container">
+			<ul class="projects-categories">
+				<li class="active"><a href="#">Все проекты</a></li>
+				<li><a href="#">Исследования рынка</a></li>
+				<li><a href="#">Брендинг</a></li>
+				<li><a href="#">Дизайн</a></li>
+				<li><a href="#">Стратегии продвижения</a></li>
+				<li><a href="#">Креатив и сторителлинг</a></li>
+				<li><a href="#">Performance маркетинг</a></li>
+				<li><a href="#">Продакшн</a></li>
+				<li><a href="#">Веб-разработка</a></li>
+			</ul>
+			<div class="projects-grid">
+				{% include 'components/projects-item.html' %}
+				{% include 'components/projects-item.html' %}
+				{% include 'components/projects-item.html' %}
+				{% include 'components/projects-item.html' %}
+			</div>
+		</div>
+	</section>
+
+</main>
+
+{% endblock %}

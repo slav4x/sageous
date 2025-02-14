@@ -325,4 +325,15 @@ document.addEventListener('DOMContentLoaded', function () {
       opacity: i === totalCards - 1 ? 1 : 0.5,
     });
   });
+
+  const servicesProjectsSwitch = document.querySelector('.services-projects__switch span');
+  gsap.to('.services-projects__switch span', {
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '.services-projects',
+      start: 'top top',
+      onEnter: () => servicesProjectsSwitch?.classList.add('active'),
+      onLeaveBack: () => servicesProjectsSwitch?.classList.remove('active'),
+    },
+  });
 });

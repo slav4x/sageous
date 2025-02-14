@@ -258,3 +258,43 @@
 			p
 				line-height: 1.4
 				color: var(--color-white-opacity)
+	&-projects
+		padding: var(--padding-section) 0
+		&__switch
+			@include flexbox
+			align-items: center
+			gap: 10px
+			margin-bottom: 20px
+			font-size: 16px
+			line-height: 20px
+			font-weight: 500
+			span
+				display: block
+				width: 54px
+				height: 32px
+				border-radius: 99px
+				border: 1px solid var(--color-stroke)
+				background: url(../img/pattern.png) top right / 24px
+				transition: .3s
+				position: relative
+				&::before
+					content: ''
+					position: absolute
+					top: 0
+					bottom: 0
+					left: 10px
+					width: 12px
+					height: 12px
+					border-radius: 100%
+					background: #fff
+					margin: auto 0
+					transition: .3s
+				&.active
+					background-color: var(--color-accent)
+					&::before
+						left: 32px
+		&__grid
+			display: grid
+			grid-template-columns: repeat(3, 1fr)
+			gap: 40px 20px
+			margin-top: 80px

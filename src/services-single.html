@@ -74,6 +74,19 @@
 		</div>
 	</section>
 
+	<section class="services-projects">
+		<div class="container">
+			<div class="services-projects__switch"><span></span>Успешные кейсы</div>
+			<h2 class="title">Реализованные проекты</h2>
+			<div class="services-projects__grid">
+				{% set sm = true %}
+				{% include 'components/projects-item.html' %}
+				{% include 'components/projects-item.html' %}
+				{% include 'components/projects-item.html' %}
+			</div>
+		</div>
+	</section>
+
 </main>
 
 {% endblock %}

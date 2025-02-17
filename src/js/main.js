@@ -354,4 +354,15 @@ document.addEventListener('DOMContentLoaded', function () {
       prevEl: '.projects-slider__arrow-prev',
     },
   });
+
+  gsap.utils.toArray('.about-list li').forEach((item, index) => {
+    let span = item.querySelector('span');
+
+    ScrollTrigger.create({
+      trigger: item,
+      start: `top ${50 - index * 5}%`,
+      onEnter: () => span.classList.add('active'),
+      onLeaveBack: () => span.classList.remove('active'),
+    });
+  });
 });

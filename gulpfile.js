@@ -111,6 +111,7 @@ const libs_js = () => {
     'src/js/vendor/ScrollTrigger.min.js',
     'src/js/vendor/swiper-bundle.min.js',
     'src/js/vendor/fancybox.umd.js',
+    'src/js/vendor/split-type.js',
   ])
     .pipe(gulpIf(isProd, terser()))
     .pipe(gulpIf(isProd, concat('libs.min.js'), concat('libs.js')))

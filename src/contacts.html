@@ -1,0 +1,34 @@
+{% extends 'components/_layout.html' %}
+{% set site_title = 'Контакты' %}
+
+{% block content %}
+
+<main class="main">
+
+	{% include 'components/_header.html' %}
+
+	<section class="contacts-title">
+		<div class="container">
+			<div class="marquee-container">
+				<h1 class="marquee-text">контакты</h1>
+			</div>
+			<ul class="contacts-title__list">
+				<li>
+					<p>Email</p>
+					<a href="mailto:sageous@info.com">sageous@info.com</a>
+				</li>
+				<li>
+					<p>Телефон</p>
+					<a href="tel:7920343232">+7920343232</a>
+				</li>
+				<li>
+					<p>Карта партнера</p>
+					<a href="#" class="btn btn-arrow btn-download">Скачать</a>
+				</li>
+			</ul>
+		</div>
+	</section>
+
+</main>
+
+{% endblock %}

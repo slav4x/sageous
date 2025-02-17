@@ -116,8 +116,8 @@ document.addEventListener('DOMContentLoaded', function () {
   gsap.to('.footer-feedback__ready span', {
     ease: 'none',
     scrollTrigger: {
-      trigger: '.footer',
-      start: 'top top',
+      trigger: footerFeedbackReady,
+      start: 'top 50%',
       onEnter: () => footerFeedbackReady?.classList.add('active'),
       onLeaveBack: () => footerFeedbackReady?.classList.remove('active'),
     },

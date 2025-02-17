@@ -105,12 +105,12 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  gsap.utils.toArray('.strategies-list li').forEach((item) => {
+  gsap.utils.toArray('.strategies-list li').forEach((item, index) => {
     let span = item.querySelector('span');
 
     ScrollTrigger.create({
       trigger: item,
-      start: 'top 30%',
+      start: `top ${50 - index * 5}%`,
       onEnter: () => span.classList.add('active'),
       onLeaveBack: () => span.classList.remove('active'),
     });
@@ -144,8 +144,8 @@ document.addEventListener('DOMContentLoaded', function () {
   gsap.to('.exp-switch span', {
     ease: 'none',
     scrollTrigger: {
-      trigger: '.exp-wrapper',
-      start: 'top top',
+      trigger: expSwitch,
+      start: 'top 50%',
       onEnter: () => expSwitch?.classList.add('active'),
       onLeaveBack: () => expSwitch?.classList.remove('active'),
     },
@@ -189,8 +189,8 @@ document.addEventListener('DOMContentLoaded', function () {
   gsap.to('.approach-switch span', {
     ease: 'none',
     scrollTrigger: {
-      trigger: '.approach',
-      start: 'top top',
+      trigger: approachSwitch,
+      start: 'top 50%',
       onEnter: () => approachSwitch?.classList.add('active'),
       onLeaveBack: () => approachSwitch?.classList.remove('active'),
     },
@@ -303,8 +303,8 @@ document.addEventListener('DOMContentLoaded', function () {
   gsap.to('.services-steps__switch span', {
     ease: 'none',
     scrollTrigger: {
-      trigger: '.services-steps',
-      start: 'top top',
+      trigger: stepsSwitch,
+      start: 'top 50%',
       onEnter: () => stepsSwitch?.classList.add('active'),
       onLeaveBack: () => stepsSwitch?.classList.remove('active'),
     },
@@ -337,8 +337,8 @@ document.addEventListener('DOMContentLoaded', function () {
   gsap.to('.services-projects__switch span', {
     ease: 'none',
     scrollTrigger: {
-      trigger: '.services-projects',
-      start: 'top top',
+      trigger: servicesProjectsSwitch,
+      start: 'top 50%',
       onEnter: () => servicesProjectsSwitch?.classList.add('active'),
       onLeaveBack: () => servicesProjectsSwitch?.classList.remove('active'),
     },

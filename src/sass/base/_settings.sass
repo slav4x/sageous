@@ -146,6 +146,7 @@ input, textarea
   position: relative
   overflow: hidden
   border-radius: var(--border-radius-lg)
+  will-change: transform, width
   img
     max-width: initial
     width: 100%
@@ -157,6 +158,7 @@ input, textarea
     left: 50%
     transform: translateX(-50%)
     transform-origin: 50% 50%
+    will-change: transform, top
 
 .full-image-2
   width: 100%
@@ -165,6 +167,7 @@ input, textarea
   position: relative
   overflow: hidden
   border-radius: 0
+  will-change: transform, width
   img
     max-width: initial
     width: 100%
@@ -176,6 +179,7 @@ input, textarea
     left: 50%
     transform: translateX(-50%)
     transform-origin: 50% 50%
+    will-change: transform, top
 
 .label
   display: block
@@ -357,3 +361,8 @@ input, textarea
     font-weight: 500
     &:first-child
       margin-top: 0
+
+.line,
+.word,
+.char
+  will-change: opacity, transform

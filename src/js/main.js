@@ -389,4 +389,20 @@ document.addEventListener('DOMContentLoaded', function () {
       onLeaveBack: () => span.classList.remove('active'),
     });
   });
+
+  const splitTypes = document.querySelectorAll('[data-animate-text]');
+  splitTypes.forEach((char, i) => {
+    const text = new SplitType(char, { types: ['chars', 'words'] });
+    gsap.from(text.chars, {
+      scrollTrigger: {
+        trigger: char,
+        start: 'top 80%',
+        end: 'top 20%',
+        scrub: true,
+        markers: false,
+      },
+      opacity: 0.2,
+      stagger: 0.1,
+    });
+  });
 });

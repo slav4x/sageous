@@ -49,30 +49,26 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   gsap.to('.full-image', {
-    scale: 1,
+    width: 'calc(100% - 80px)',
     ease: 'none',
     scrollTrigger: {
       trigger: '.full-image',
-      start: 'top 80%',
-      end: 'bottom: 20%',
+      start: 'top 50%',
+      end: 'bottom bottom',
       scrub: true,
-      // onUpdate: (self) => {
-      //   const image = document.querySelector('.full-image');
-      //   self.progress >= 1 ? image.classList.add('change') : image.classList.remove('change');
-      // },
     },
   });
 
-  // gsap.to('.footer-content', {
-  //   yPercent: 100,
-  //   ease: 'none',
-  //   scrollTrigger: {
-  //     trigger: '.footer',
-  //     start: 'top bottom',
-  //     end: 'bottom bottom',
-  //     scrub: true,
-  //   },
-  // });
+  gsap.to('.full-image img', {
+    y: 200,
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '.full-image',
+      start: 'top 50%',
+      end: 'bottom bottom',
+      scrub: true,
+    },
+  });
 
   gsap.utils.toArray('.marketing-item').forEach((item) => {
     let content = item.querySelector('.marketing-item__content');
@@ -294,7 +290,18 @@ document.addEventListener('DOMContentLoaded', function () {
     scrollTrigger: {
       trigger: '.full-image-2',
       start: 'top 50%',
-      end: 'bottom: 20%',
+      end: 'bottom bottom',
+      scrub: true,
+    },
+  });
+
+  gsap.to('.full-image-2 img', {
+    y: 200,
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '.full-image-2',
+      start: 'top 50%',
+      end: 'bottom bottom',
       scrub: true,
     },
   });

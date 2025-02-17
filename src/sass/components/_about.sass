@@ -3,13 +3,13 @@
 	&-list
 		display: grid
 		grid-template-columns: repeat(4, 1fr)
-		margin-top: 80px
-		gap: 80px
+		margin-top: var(--gap)
+		gap: var(--gap)
 		li
 			@include flexbox
 			flex-direction: column
 			align-items: flex-start
-			gap: 40px
+			gap: calc(var(--gap) / 2)
 			span
 				display: block
 				width: 54px

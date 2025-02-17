@@ -75,7 +75,7 @@
 					position: relative
 					@include flexbox
 					align-items: flex-start
-					gap: 40px
+					gap: calc(var(--gap) / 2)
 					&::before
 						content: ''
 						position: absolute
@@ -163,7 +163,7 @@
 			display: flex
 			align-items: flex-start
 			flex-direction: column
-			gap: 80px
+			gap: var(--gap)
 		&__text
 			display: flex
 			align-items: flex-start
@@ -296,8 +296,8 @@
 		&__grid
 			display: grid
 			grid-template-columns: repeat(3, 1fr)
-			gap: 40px 20px
-			margin-top: 80px
+			gap: calc(var(--gap) / 2) 20px
+			margin-top: var(--gap)
 	&-similar
 		padding: var(--padding-section) 0
 		border-top: 1px solid rgba(255,255,255,.25)
@@ -310,7 +310,7 @@
 			margin-left: auto
 			@include flexbox
 			align-items: flex-start
-			gap: 20px 40px
+			gap: 20px calc(var(--gap) / 2)
 			li
 				width: calc(100% / 2 - 20px)
 				a

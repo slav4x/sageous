@@ -1,7 +1,7 @@
 .header
 	margin-top: 40px
 	&:not(.header-home)
-		margin-bottom: 80px
+		margin-bottom: var(--gap)
 	&::before
 		content: ''
 		position: fixed
@@ -153,7 +153,6 @@
 			display: none
 	&-row
 		@include flexbox
-		align-items: flex-start
 		justify-content: space-between
 		max-width: 565px
 		width: 100%
@@ -162,7 +161,7 @@
 		@include flexbox
 		flex-direction: column
 		align-items: flex-start
-		gap: 40px
+		justify-content: space-between
 	&-nav
 		p
 			font-size: 14px

@@ -3,7 +3,7 @@
 
 {% block content %}
 
-<main class="main">
+<main class="main" id="about">
 
 	{% include 'components/_header.html' %}
 
@@ -20,10 +20,10 @@
 			</div>
 			<div class="services-single__row">
 				<ul class="services-single__nav">
-					<li class="active"><a href="#">Об услуге</a></li>
-					<li><a href="#">Этапы работы</a></li>
-					<li><a href="#">Результат</a></li>
-					<li><a href="#">Проекты</a></li>
+					<li class="active"><a href="#about">Об услуге</a></li>
+					<li><a href="#steps">Этапы работы</a></li>
+					<li><a href="#result">Результат</a></li>
+					<li><a href="#projects">Проекты</a></li>
 				</ul>
 				<div class="services-single__content">
 					<div class="services-single__text">
@@ -36,7 +36,7 @@
 		</div>
 	</section>
 
-	<section class="services-steps">
+	<section class="services-steps" id="steps">
 		<div class="container">
 			<div class="services-steps__row">
 				<div class="services-steps__sidebar">
@@ -64,7 +64,7 @@
 	<section class="exp">
 		<div class="container">
 			<div class="exp-image"><img src="img/exp-image-2.png" alt=""></div>
-			<div class="exp-wrapper">
+			<div class="exp-wrapper" id="result">
 				<div class="exp-content">
 					<div class="exp-switch"><span></span>Lorem ipsum col</div>
 					<h2 class="title">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</h2>
@@ -140,7 +140,7 @@
 		</div>
 	</section>
 
-	<section class="services-projects">
+	<section class="services-projects" id="projects">
 		<div class="container">
 			<div class="services-projects__switch"><span></span>Успешные кейсы</div>
 			<h2 class="title">Реализованные проекты</h2>

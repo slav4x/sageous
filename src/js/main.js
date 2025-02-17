@@ -1,4 +1,11 @@
 document.addEventListener('DOMContentLoaded', function () {
+  Fancybox.bind('[data-fancybox]', {
+    dragToClose: false,
+    autoFocus: false,
+    placeFocusBack: false,
+    Thumbs: false,
+  });
+
   const maskOptions = {
     mask: '+7 (000) 000-00-00',
     onFocus: function () {

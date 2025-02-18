@@ -1,6 +1,7 @@
 .services
 	&-title
 		padding-bottom: var(--padding-section)
+		overflow: hidden
 		h1
 			font-size: var(--font-size-xxl)
 			text-transform: uppercase
@@ -22,7 +23,7 @@
 			@include flexbox
 			align-items: flex-start
 		&__sticky
-			width: 775px
+			width: calc(100% - var(--width-content) - 20px)
 			height: calc(100vh - 40px)
 			position: sticky
 			top: 20px
@@ -35,13 +36,9 @@
 			flex-direction: column
 			align-items: flex-start
 			justify-content: flex-end
-			h1
+			.title
 				position: relative
 				z-index: 5
-				font-size: 52px
-				font-weight: 500
-				text-transform: uppercase
-				line-height: 1.2
 			img
 				position: absolute
 				top: 0
@@ -54,7 +51,7 @@
 				height: 100%
 				max-width: initial
 		&__content
-			width: calc(100% - 775px - 20px)
+			width: var(--width-content)
 			margin-left: auto
 		&__nav
 			border: 1px solid var(--color-white-extra-opacity)
@@ -109,6 +106,7 @@
 	&-single
 		padding-bottom: var(--padding-section)
 		border-bottom: 1px solid var(--color-white-extra-opacity)
+		overflow: hidden
 		.breadcrumbs
 			margin-bottom: 30px
 		.marquee-text
@@ -338,6 +336,7 @@
 		.container
 			@include flexbox
 			align-items: flex-start
+			justify-content: space-between
 		&__content
 			max-width: var(--width-content)
 			flex: 1
@@ -345,4 +344,4 @@
 		&__sticky
 			position: sticky
 			top: 20px
-			width: 600px
+			width: calc(100% - var(--width-content) - 20px)

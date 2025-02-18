@@ -70,6 +70,9 @@ document.addEventListener('DOMContentLoaded', function () {
     },
   });
 
+  let fontSizeSm = '24px';
+  if (window.innerWidth < 1600) fontSizeSm = '20px';
+
   gsap.utils.toArray('.marketing-item').forEach((item) => {
     let content = item.querySelector('.marketing-item__content');
     let heading = item.querySelector('h3');
@@ -77,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let originalFontSize = window.getComputedStyle(heading).fontSize;
     let originalHeight = content.offsetHeight;
 
-    heading.style.fontSize = '24px';
+    heading.style.fontSize = fontSizeSm;
     let reducedHeight = heading.offsetHeight;
     heading.style.fontSize = originalFontSize;
 
@@ -87,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function () {
       toggleActions: 'play reverse play reverse',
       scrub: true,
       onEnter: () => {
-        gsap.to(heading, { fontSize: '24px', duration: 0.5, ease: 'power2.out' });
+        gsap.to(heading, { fontSize: fontSizeSm, duration: 0.5, ease: 'power2.out' });
         gsap.to(content, { height: reducedHeight, duration: 0.5, ease: 'power2.out', onUpdate: () => ScrollTrigger.refresh() });
       },
       onLeaveBack: () => {

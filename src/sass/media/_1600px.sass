@@ -1,0 +1,229 @@
+@media (max-width: 1600px)
+	:root
+		--border-radius-lg: 20px
+		--padding-section: 200px
+		--width-content: 900px
+		--gap: 60px
+		--font-size-xxl: 124px
+
+	body
+		font-size: 18px
+
+	.container
+		padding: 0 20px
+
+	.title
+		font-size: 42px
+		&-md
+			font-size: 32px
+
+	.btn
+		&-pattern
+			height: 72px
+			padding-left: 68px
+			&::before
+				width: 42px
+				height: 42px
+			&:hover
+				span
+					transform: translateX(-48px)
+				&::before
+					left: calc(100% - 42px - 15px)
+
+	.label
+		&-input
+			font-size: 18px
+			height: 70px
+		&-text
+			font-size: 18px
+
+	.form
+		gap: 20px
+		&-captcha
+			margin-top: 20px
+		&-footer
+			margin-top: 20px
+		&-title
+			margin-top: 60px
+
+	.header
+		margin-top: 20px
+		&-logo
+			img
+				height: 40px
+		&-row
+			max-width: 320px
+		&-nav
+			p
+				font-size: 12px
+				margin-bottom: 12px
+			ul
+				font-size: 14px
+				line-height: 16px
+		&-burger
+			&__button
+				&-name
+					font-size: 14px
+				&-icon
+					width: 20px
+					height: 20px
+
+	.hero
+		.container
+			height: calc(100% - 40px)
+		&-label
+			font-size: 24px
+			margin-bottom: 25px
+		&-title
+			font-size: 52px
+			margin-bottom: 30px
+
+	.strategies
+		&-list
+			width: 400px
+
+	.marketing
+		&-item
+			padding: 40px 0
+			&__content
+				h3
+					font-size: 36px
+				p
+					font-size: 16px
+			.container::after
+				right: 20px
+
+	.approach
+		&-image
+			margin-left: -20px
+			margin-right: -20px
+			img
+				width: 1440px
+		&-name
+			font-size: 280px
+		&-list
+			width: 780px
+		&-item
+			padding: 20px
+			width: 380px
+			height: 400px
+			&__title
+				font-size: 24px
+				margin-bottom: 20px
+			&__text
+				font-size: 16px
+
+	.exp
+		&-image img
+			width: 1440px
+
+	.clients
+		&-item
+			min-width: 320px
+			height: 260px
+
+	.footer
+		&-feedback
+			&__sticky
+				width: 360px
+				img
+					border-radius: 20px
+					margin-bottom: 60px
+		&-nav
+			p
+				font-size: 12px
+				margin-bottom: 10px
+			ul
+				font-size: 14px
+				line-height: 18px
+		&-bottom
+			font-size: 12px
+
+	.services
+		&-title
+			h1
+				line-height: 124px
+			.marquee-container
+				height: 124px
+		&-category
+			.header
+				margin-bottom: 40px
+			.breadcrumbs
+				margin-bottom: 24px
+			&__sticky
+				padding: 20px
+			&__nav
+				li
+					a
+						padding: 30px 20px
+						font-size: 26px
+		&-single
+			.breadcrumbs
+				margin-bottom: 24px
+			.marquee-text
+				line-height: 124px
+			.marquee-container
+				height: 124px
+			&__row
+				margin-top: 100px
+		&-steps
+			&__card
+				gap: 20px
+				padding: 30px
+				h3
+					font-size: 24px
+		&-similar
+			&__list li a
+				font-size: 16px
+				line-height: 20px
+
+	.projects
+		&-item
+			&__image
+				margin-bottom: 30px
+				height: 420px
+			&__name
+				font-size: 20px
+			&-sm
+				.projects-item__image
+					height: 260px
+		&-title
+			padding-bottom: 60px
+			h1
+				line-height: 124px
+			.marquee-container
+				height: 124px
+			&__counter
+				h3
+					line-height: 124px
+				p
+					padding: 14px 0
+					&::before
+						background-size: cover
+						width: 36px
+						height: 36px
+		&-categories
+			gap: 6px
+			li
+				a
+					font-size: 14px
+					line-height: 16px
+					padding: 12px
+		&-single
+			.title
+				margin-bottom: 100px
+		&-slider
+			&__carousel
+				max-width: 70%
+			&__item
+				height: 600px
+
+	.contacts
+		&-title
+			h1
+				line-height: 124px
+			.marquee-container
+				height: 124px
+			&__list
+				margin-top: 15px
+				min-width: 320px

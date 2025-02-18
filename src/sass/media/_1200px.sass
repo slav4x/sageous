@@ -1,0 +1,139 @@
+@media (max-width: 1200px)
+	:root
+		--padding-section: 140px
+		--width-content: 100%
+		--gap: 40px
+
+	.home
+		&-nav
+			display: none
+
+	.strategies
+		&-list
+			display: none
+
+	.full-image
+		width: 80%
+
+	.marketing
+		&-desc
+			flex: initial
+		&-list
+			margin-top: 80px
+		&-item
+			.container
+				&::before,
+				&::after
+					display: none
+
+	.approach
+		&-head
+			height: auto
+			position: absolute
+			padding-top: 40px
+			max-width: 100%
+		&-name
+			font-size: 200px
+		&-list
+			width: 100%
+		&-item
+			width: calc(100% / 2 - 10px)
+
+	.exp
+		&-image
+			img
+				width: 1024px
+
+	.footer
+		&-feedback
+			&__sticky
+				width: 100%
+				position: relative
+				top: 0
+				padding-bottom: var(--padding-section)
+				img
+					display: none
+		&-main
+			.container
+				gap: var(--gap)
+		&-row
+			flex: initial
+			width: 100%
+
+	.services
+		&-category
+			.container
+				gap: 20px
+			&__sticky
+				width: 100%
+				height: 460px
+				position: relative
+				top: 0
+				margin: 0
+			&__content
+				.header,
+				.breadcrumbs
+					display: none
+		&-single
+			&__nav
+				display: none
+		&-steps
+			&__sidebar
+				width: 100%
+				position: relative
+				top: 0
+				margin-bottom: var(--gap)
+			&__card
+				position: relative
+				top: 0
+		&-form
+			&__sticky
+				width: 100%
+				position: relative
+				top: 0
+				margin-bottom: var(--gap)
+		&-projects
+			&__grid
+				grid-template-columns: repeat(2, 1fr)
+				gap: var(--gap) calc(var(--gap) / 2)
+		&-similar
+			.title
+				width: 100%
+				margin-bottom: var(--gap)
+				br
+					display: none
+		&-single
+			&__row
+				.title-xs
+					width: 100%
+					margin-bottom: var(--gap)
+
+	.projects
+		&-title
+			&__counter
+				display: none
+		&-row
+			gap: var(--gap)
+		&-left
+			width: 100%
+		&-single
+			.title
+				margin-bottom: var(--gap)
+			&__services ul
+				flex-direction: row
+
+	.about
+		&-list
+			grid-template-columns: repeat(2, 1fr)
+
+	.contacts
+		&-title
+			.marquee-container
+				flex: initial
+			&__list
+				min-width: 0
+				margin-top: var(--gap)
+
+	.main-services > .header
+		display: block
+		margin-bottom: 20px

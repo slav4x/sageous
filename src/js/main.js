@@ -48,8 +48,11 @@ document.addEventListener('DOMContentLoaded', function () {
     },
   });
 
+  let fullImageWidth = 'calc(100% - 80px)';
+  if (window.innerWidth < 1600) fullImageWidth = 'calc(100% - 40px)';
+
   gsap.to('.full-image', {
-    width: 'calc(100% - 80px)',
+    width: fullImageWidth,
     ease: 'none',
     scrollTrigger: {
       trigger: '.full-image',
@@ -304,7 +307,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   gsap.to('.full-image-2', {
-    width: 'calc(100% - 80px)',
+    width: fullImageWidth,
     borderRadius: '40px',
     ease: 'none',
     scrollTrigger: {
@@ -337,28 +340,30 @@ document.addEventListener('DOMContentLoaded', function () {
     },
   });
 
-  const cards = gsap.utils.toArray('.services-steps__card');
-  const step = 0.05;
-  const totalCards = cards.length;
+  if (window.innerWidth >= 1200) {
+    const cards = gsap.utils.toArray('.services-steps__card');
+    const step = 0.05;
+    const totalCards = cards.length;
 
-  cards.forEach((card, i) => {
-    const finalScale = 1 - (totalCards - 1 - i) * step;
-    card.style.top = `${20 + i * 20}px`;
-    card.style.marginBottom = `${(totalCards - 1 - i) * 20}px`;
-    card.style.marginTop = `${(totalCards - 1 - i) * -20 - 20}px`;
-    card.style.zIndex = i + 1;
+    cards.forEach((card, i) => {
+      const finalScale = 1 - (totalCards - 1 - i) * step;
+      card.style.top = `${20 + i * 20}px`;
+      card.style.marginBottom = `${(totalCards - 1 - i) * 20}px`;
+      card.style.marginTop = `${(totalCards - 1 - i) * -20 - 20}px`;
+      card.style.zIndex = i + 1;
 
-    gsap.to(card, {
-      scrollTrigger: {
-        trigger: card,
-        start: 'top top+=20',
-        end: () => `top+=${card.offsetHeight} top`,
-        scrub: true,
-      },
-      scale: finalScale,
-      opacity: i === totalCards - 1 ? 1 : 0.5,
+      gsap.to(card, {
+        scrollTrigger: {
+          trigger: card,
+          start: 'top top+=20',
+          end: () => `top+=${card.offsetHeight} top`,
+          scrub: true,
+        },
+        scale: finalScale,
+        opacity: i === totalCards - 1 ? 1 : 0.5,
+      });
     });
-  });
+  }
 
   const servicesProjectsSwitch = document.querySelector('.services-projects__switch span');
   gsap.to('.services-projects__switch span', {

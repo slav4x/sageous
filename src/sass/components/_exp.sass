@@ -3,14 +3,18 @@
 		position: sticky
 		top: 0
 		height: 100vh
-		overflow: hidden
 		img
 			position: absolute
-			max-width: initial
+			max-width: 1920px
+			width: calc(100% + 80px)
+			height: 100%
+			object-fit: scale-down
+			object-position: center
+			margin: 0 -40px
 			top: 50%
 			left: 50%
 			transform: translate(-50%, -50%) translate3d(0, 0, 0)
-			will-change: filter, transform
+			will-change: filter, transform, scale
 	&-wrapper
 		min-height: 100vh
 		padding: 260px 0

@@ -274,11 +274,16 @@
 				background-color: transparent !important
 				cursor: not-allowed
 	&-gallery
+		.container
+			@include flexbox
+			flex-direction: column
+			align-items: flex-start
+			gap: 20px
 		&-grid
 			width: 100%
 			display: grid
 			grid-template-columns: repeat(3, 1fr)
-			grid-template-rows: repeat(4, 1fr)
+			grid-template-rows: repeat(4, 330px)
 			gap: 20px
 		&-item
 			border-radius: var(--border-radius)

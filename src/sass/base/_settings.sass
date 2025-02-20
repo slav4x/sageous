@@ -141,12 +141,17 @@ input, textarea
 
 .full-image
   width: 1260px
-  margin: 0 auto
-  height: calc(100vh - 80px)
+  height: 100%
   position: relative
   overflow: hidden
   border-radius: var(--border-radius-lg)
   will-change: transform, width
+  margin: 0 auto
+  &-wrapper
+    width: calc(100% - 80px)
+    height: calc(var(--100vh) - 80px)
+    margin: 0 auto
+    will-change: transform, width
   img
     max-width: initial
     width: 100%
@@ -156,14 +161,14 @@ input, textarea
     position: absolute
     top: -200px
     left: 50%
-    transform: translateX(-50%)
+    transform: translate(-50%, 0px)
     transform-origin: 50% 50%
     will-change: transform, top
 
 .full-image-2
   width: 100%
   margin: 0 auto
-  height: 100vh
+  height: var(--100vh)
   position: relative
   overflow: hidden
   border-radius: 0

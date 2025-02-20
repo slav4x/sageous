@@ -1,8 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
   // Константы и конфигурации
-  const BREAKPOINT = 1600;
-  const fullImageWidth = window.innerWidth < BREAKPOINT ? 'calc(100% - 40px)' : 'calc(100% - 80px)';
-  const fontSizeSm = window.innerWidth < BREAKPOINT ? '20px' : '24px';
+  const BREAKPOINTS = { mobile: 1024, desktop: 1600 };
+  const fullImageWidth = window.innerWidth < BREAKPOINTS.desktop ? 'calc(100% - 40px)' : 'calc(100% - 80px)';
+  const fontSizeSm = window.innerWidth < BREAKPOINTS.desktop ? '20px' : '24px';
+  const widthApproachBG = window.innerWidth < BREAKPOINTS.mobile ? 'calc(100% + 375px)' : 'calc(100% + 960px)';
+  const approachBgBorderRadius = window.innerWidth < BREAKPOINTS.desktop ? '0 0 20px 20px' : '0 0 40px 40px';
+  const fullImageBorderRadius = window.innerWidth < BREAKPOINTS.desktop ? '20px' : '40px';
+  const fullImageTrigger = window.innerWidth < BREAKPOINTS.mobile ? 'top 80%' : 'top 50%';
+  const fullImageY = window.innerWidth < BREAKPOINTS.mobile ? 100 : 200;
 
   // Инициализация плагинов
   Fancybox.bind('[data-fancybox]', {
@@ -38,10 +43,16 @@ document.addEventListener('DOMContentLoaded', () => {
   gsap.registerPlugin(ScrollTrigger);
 
   // Анимации
+  gsap.set('.exp-image img', {
+    xPercent: -50,
+    yPercent: -50,
+    scale: 1,
+  });
+
   const animations = [
     { selector: '.hero', props: { yPercent: 50 }, trigger: { start: 'top top', end: 'bottom top' } },
-    { selector: '.full-image', props: { width: fullImageWidth }, trigger: { start: 'top 50%', end: 'bottom bottom' } },
-    { selector: '.full-image img', props: { y: 200 }, trigger: { start: 'top 50%', end: 'bottom bottom' } },
+    { selector: '.full-image', props: { width: '100%' }, trigger: { start: fullImageTrigger, end: 'bottom bottom' } },
+    { selector: '.full-image img', props: { y: fullImageY }, trigger: { start: fullImageTrigger, end: 'bottom bottom' } },
     {
       selector: '.exp-image img',
       props: { scale: 1.4, filter: 'blur(50px) grayscale(100%)', opacity: 0.2 },
@@ -49,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       selector: '.approach-bg__right, .approach-bg__left',
-      props: { width: 'calc(100% + 960px)' },
+      props: { width: widthApproachBG },
       trigger: { trigger: '.approach', start: 'top bottom', end: 'top top' },
     },
     {
@@ -59,15 +70,15 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       selector: '.approach-bg',
-      props: { borderRadius: '0 0 40px 40px', scale: 0.96 },
+      props: { borderRadius: approachBgBorderRadius, scale: 0.96 },
       trigger: { trigger: '.approach', start: 'bottom center', end: 'bottom top' },
     },
     {
       selector: '.full-image-2',
-      props: { width: fullImageWidth, borderRadius: '40px' },
-      trigger: { start: 'top 50%', end: 'bottom bottom' },
+      props: { width: fullImageWidth, borderRadius: fullImageBorderRadius },
+      trigger: { start: fullImageTrigger, end: 'bottom bottom' },
     },
-    { selector: '.full-image-2 img', props: { y: 200 }, trigger: { start: 'top 50%', end: 'bottom bottom' } },
+    { selector: '.full-image-2 img', props: { y: fullImageY }, trigger: { start: fullImageTrigger, end: 'bottom bottom' } },
   ];
 
   animations.forEach(({ selector, props, trigger }) => {
@@ -79,30 +90,32 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Marketing items
-  gsap.utils.toArray('.marketing-item').forEach((item) => {
-    const content = item.querySelector('.marketing-item__content');
-    const heading = item.querySelector('h3');
-    const originalFontSize = window.getComputedStyle(heading).fontSize;
-    const originalHeight = content.offsetHeight;
+  if (window.innerWidth > BREAKPOINTS.mobile) {
+    gsap.utils.toArray('.marketing-item').forEach((item) => {
+      const content = item.querySelector('.marketing-item__content');
+      const heading = item.querySelector('h3');
+      const originalFontSize = window.getComputedStyle(heading).fontSize;
+      const originalHeight = content.offsetHeight;
 
-    heading.style.fontSize = fontSizeSm;
-    const reducedHeight = heading.offsetHeight;
-    heading.style.fontSize = originalFontSize;
+      heading.style.fontSize = fontSizeSm;
+      const reducedHeight = heading.offsetHeight;
+      heading.style.fontSize = originalFontSize;
 
-    ScrollTrigger.create({
-      trigger: item,
-      start: 'top 25%',
-      toggleActions: 'play reverse play reverse',
-      onEnter: () => {
-        gsap.to(heading, { fontSize: fontSizeSm, duration: 0.5, ease: 'power2.out' });
-        gsap.to(content, { height: reducedHeight, duration: 0.5, ease: 'power2.out', onUpdate: ScrollTrigger.refresh });
-      },
-      onLeaveBack: () => {
-        gsap.to(heading, { fontSize: originalFontSize, duration: 0.5, ease: 'power2.out' });
-        gsap.to(content, { height: originalHeight, duration: 0.5, ease: 'power2.out', onUpdate: ScrollTrigger.refresh });
-      },
+      ScrollTrigger.create({
+        trigger: item,
+        start: 'top 25%',
+        toggleActions: 'play reverse play reverse',
+        onEnter: () => {
+          gsap.to(heading, { fontSize: fontSizeSm, duration: 0.5, ease: 'power2.out' });
+          gsap.to(content, { height: reducedHeight, duration: 0.5, ease: 'power2.out', onUpdate: ScrollTrigger.refresh });
+        },
+        onLeaveBack: () => {
+          gsap.to(heading, { fontSize: originalFontSize, duration: 0.5, ease: 'power2.out' });
+          gsap.to(content, { height: originalHeight, duration: 0.5, ease: 'power2.out', onUpdate: ScrollTrigger.refresh });
+        },
+      });
     });
-  });
+  }
 
   // Toggle классов при скролле
   const toggleClassTriggers = [
@@ -181,20 +194,22 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Approach items
-  document.querySelectorAll('.approach-item').forEach((item) => {
-    const title = item.querySelector('.approach-item__title');
-    const content = item.querySelector('.approach-item__content');
-    if (!title || !content) return;
+  if (window.innerWidth > BREAKPOINTS.mobile) {
+    document.querySelectorAll('.approach-item').forEach((item) => {
+      const title = item.querySelector('.approach-item__title');
+      const content = item.querySelector('.approach-item__content');
+      if (!title || !content) return;
 
-    const heights = {
-      collapsed: `${title.offsetHeight}px`,
-      expanded: `${content.scrollHeight}px`,
-    };
-    content.style.height = heights.collapsed;
+      const heights = {
+        collapsed: `${title.offsetHeight}px`,
+        expanded: `${content.scrollHeight}px`,
+      };
+      content.style.height = heights.collapsed;
 
-    item.addEventListener('mouseenter', () => (content.style.height = heights.expanded));
-    item.addEventListener('mouseleave', () => (content.style.height = heights.collapsed));
-  });
+      item.addEventListener('mouseenter', () => (content.style.height = heights.expanded));
+      item.addEventListener('mouseleave', () => (content.style.height = heights.collapsed));
+    });
+  }
 
   // Марки
   const marquee = {
@@ -207,7 +222,7 @@ document.addEventListener('DOMContentLoaded', () => {
       text: marquee.text.offsetWidth + 40,
       container: marquee.container.offsetWidth + 40,
     };
-    const speed = 150;
+    const speed = 100;
 
     const animateMarquee = () => {
       gsap.to(marquee.text, {
@@ -252,11 +267,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Слайдер проектов
   new Swiper('.projects-slider__carousel', {
-    spaceBetween: 20,
+    spaceBetween: 10,
     pagination: { el: '.projects-slider__pagination' },
     navigation: {
       nextEl: '.projects-slider__arrow-next',
       prevEl: '.projects-slider__arrow-prev',
+    },
+    breakpoints: {
+      1024: {
+        spaceBetween: 20,
+      },
     },
   });
 
@@ -275,6 +295,42 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Обновление при ресайзе
-  window.addEventListener('resize', () => ScrollTrigger.refresh());
+  const root = document.documentElement;
+  let minHeight = window.innerHeight;
+  let maxHeight = window.innerHeight;
+
+  const updateViewportHeights = () => {
+    const viewport = window.visualViewport || window;
+    const currentHeight = viewport.height || window.innerHeight;
+
+    minHeight = Math.min(minHeight, currentHeight);
+    maxHeight = Math.max(maxHeight, currentHeight);
+    const vh = currentHeight;
+
+    root.style.setProperty('--100vh', `${vh}px`);
+    root.style.setProperty('--100svh', `${minHeight}px`);
+    root.style.setProperty('--100lvh', `${maxHeight}px`);
+  };
+
+  updateViewportHeights();
+
+  let timeout;
+  const debounceUpdate = () => {
+    clearTimeout(timeout);
+    timeout = setTimeout(updateViewportHeights, 100);
+  };
+
+  window.addEventListener('resize', debounceUpdate);
+  window.addEventListener('scroll', debounceUpdate);
+
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', debounceUpdate);
+    window.visualViewport.addEventListener('scroll', debounceUpdate);
+  }
+
+  const rafUpdate = () => {
+    updateViewportHeights();
+    requestAnimationFrame(rafUpdate);
+  };
+  requestAnimationFrame(rafUpdate);
 });

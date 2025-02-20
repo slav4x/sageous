@@ -114,9 +114,9 @@
 				font-size: 16px
 
 	.exp
-		&-image img
+		&-image
+			margin-left: -20px
 			width: calc(100% + 40px)
-			margin: 0 -20px
 
 	.clients
 		&-item
@@ -143,9 +143,9 @@
 	.services
 		&-title
 			h1
-				line-height: 124px
+				line-height: var(--font-size-xxl)
 			.marquee-container
-				height: 124px
+				height: var(--font-size-xxl)
 		&-category
 			.header
 				margin-bottom: 40px
@@ -162,9 +162,9 @@
 			.breadcrumbs
 				margin-bottom: 24px
 			.marquee-text
-				line-height: 124px
+				line-height: var(--font-size-xxl)
 			.marquee-container
-				height: 124px
+				height: var(--font-size-xxl)
 			&__row
 				margin-top: 100px
 		&-steps
@@ -191,12 +191,12 @@
 		&-title
 			padding-bottom: 60px
 			h1
-				line-height: 124px
+				line-height: var(--font-size-xxl)
 			.marquee-container
-				height: 124px
+				height: var(--font-size-xxl)
 			&__counter
 				h3
-					line-height: 124px
+					line-height: var(--font-size-xxl)
 				p
 					padding: 14px 0
 					&::before
@@ -222,9 +222,12 @@
 	.contacts
 		&-title
 			h1
-				line-height: 124px
+				line-height: var(--font-size-xxl)
 			.marquee-container
-				height: 124px
+				height: var(--font-size-xxl)
 			&__list
 				margin-top: 15px
 				min-width: 320px
+
+	.full-image-wrapper
+		width: calc(100% - 40px)

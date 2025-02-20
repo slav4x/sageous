@@ -1,11 +1,11 @@
 .approach
-	min-height: 100vh
+	min-height: var(--100vh)
 	position: relative
 	will-change: transform
 	&-bg
 		position: sticky
 		top: 0
-		height: 100vh
+		height: var(--100vh)
 		will-change: transform
 		overflow: hidden
 		&__right
@@ -46,12 +46,12 @@
 				border-radius: 0 999px 999px 0
 	&-content
 		padding: 0 0 var(--padding-section)
-		margin-top: -100vh
+		margin-top: calc(var(--100vh) * -1)
 		will-change: transform
 	&-head
 		position: sticky
 		top: 0
-		height: 100vh
+		height: var(--100vh)
 		padding-top: 60px
 		max-width: 400px
 		will-change: transform
@@ -169,8 +169,8 @@
 	&-image
 		position: sticky
 		top: 0
-		height: 100vh
-		margin-top: -100vh
+		height: var(--100vh)
+		margin-top: calc(var(--100vh) * -1)
 		overflow: hidden
 		margin-left: -40px
 		margin-right: -40px

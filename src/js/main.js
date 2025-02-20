@@ -1,4 +1,10 @@
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', () => {
+  // Константы и конфигурации
+  const BREAKPOINT = 1600;
+  const fullImageWidth = window.innerWidth < BREAKPOINT ? 'calc(100% - 40px)' : 'calc(100% - 80px)';
+  const fontSizeSm = window.innerWidth < BREAKPOINT ? '20px' : '24px';
+
+  // Инициализация плагинов
   Fancybox.bind('[data-fancybox]', {
     dragToClose: false,
     autoFocus: false,
@@ -8,227 +14,143 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const maskOptions = {
     mask: '+7 (000) 000-00-00',
-    onFocus: function () {
+    onFocus() {
       if (this.value === '') this.value = '+7 ';
     },
-    onBlur: function () {
+    onBlur() {
       if (this.value === '+7 ') this.value = '';
     },
   };
 
-  const maskedElements = document.querySelectorAll('.masked');
-  maskedElements.forEach((item) => new IMask(item, maskOptions));
+  // Инициализация масок
+  document.querySelectorAll('.masked').forEach((item) => new IMask(item, maskOptions));
 
+  // Бургер-меню
   const header = document.querySelector('.header');
-  const headerBurgerButton = header.querySelectorAll('.header-burger__button');
-  const headerBurgerPopup = header.querySelector('.header-burger__popup');
-  headerBurgerButton.forEach((button) => {
-    button.addEventListener('click', () => {
-      headerBurgerPopup.classList.toggle('show');
-      header.classList.toggle('show');
-    });
-  });
+  const toggleBurger = () => {
+    header.querySelector('.header-burger__popup').classList.toggle('show');
+    header.classList.toggle('show');
+  };
+  header.querySelectorAll('.header-burger__button').forEach((btn) => btn.addEventListener('click', toggleBurger));
 
-  gsap.config({
-    autoSleep: 60,
-    force3D: true,
-    nullTargetWarn: false,
-  });
-
+  // GSAP конфигурация
+  gsap.config({ autoSleep: 60, force3D: true, nullTargetWarn: false });
   gsap.registerPlugin(ScrollTrigger);
 
-  gsap.to('.hero', {
-    yPercent: 50,
-    ease: 'none',
-    scrollTrigger: {
-      trigger: '.hero',
-      start: 'top top',
-      end: 'bottom top',
-      scrub: true,
+  // Анимации
+  const animations = [
+    { selector: '.hero', props: { yPercent: 50 }, trigger: { start: 'top top', end: 'bottom top' } },
+    { selector: '.full-image', props: { width: fullImageWidth }, trigger: { start: 'top 50%', end: 'bottom bottom' } },
+    { selector: '.full-image img', props: { y: 200 }, trigger: { start: 'top 50%', end: 'bottom bottom' } },
+    {
+      selector: '.exp-image img',
+      props: { scale: 1.4, filter: 'blur(50px) grayscale(100%)', opacity: 0.2 },
+      trigger: { trigger: '.exp', start: 'top top', end: 'bottom bottom' },
     },
+    {
+      selector: '.approach-bg__right, .approach-bg__left',
+      props: { width: 'calc(100% + 960px)' },
+      trigger: { trigger: '.approach', start: 'top bottom', end: 'top top' },
+    },
+    {
+      selector: '.approach-image img',
+      props: { yPercent: -60 },
+      trigger: { trigger: '.approach', start: 'top bottom', end: 'bottom bottom' },
+    },
+    {
+      selector: '.approach-bg',
+      props: { borderRadius: '0 0 40px 40px', scale: 0.96 },
+      trigger: { trigger: '.approach', start: 'bottom center', end: 'bottom top' },
+    },
+    {
+      selector: '.full-image-2',
+      props: { width: fullImageWidth, borderRadius: '40px' },
+      trigger: { start: 'top 50%', end: 'bottom bottom' },
+    },
+    { selector: '.full-image-2 img', props: { y: 200 }, trigger: { start: 'top 50%', end: 'bottom bottom' } },
+  ];
+
+  animations.forEach(({ selector, props, trigger }) => {
+    gsap.to(selector, {
+      ...props,
+      ease: 'none',
+      scrollTrigger: { trigger: selector, scrub: true, ...trigger },
+    });
   });
 
-  let fullImageWidth = 'calc(100% - 80px)';
-  if (window.innerWidth < 1600) fullImageWidth = 'calc(100% - 40px)';
-
-  gsap.to('.full-image', {
-    width: fullImageWidth,
-    ease: 'none',
-    scrollTrigger: {
-      trigger: '.full-image',
-      start: 'top 50%',
-      end: 'bottom bottom',
-      scrub: true,
-    },
-  });
-
-  gsap.to('.full-image img', {
-    y: 200,
-    ease: 'none',
-    scrollTrigger: {
-      trigger: '.full-image',
-      start: 'top 50%',
-      end: 'bottom bottom',
-      scrub: true,
-    },
-  });
-
-  let fontSizeSm = '24px';
-  if (window.innerWidth < 1600) fontSizeSm = '20px';
-
+  // Marketing items
   gsap.utils.toArray('.marketing-item').forEach((item) => {
-    let content = item.querySelector('.marketing-item__content');
-    let heading = item.querySelector('h3');
-
-    let originalFontSize = window.getComputedStyle(heading).fontSize;
-    let originalHeight = content.offsetHeight;
+    const content = item.querySelector('.marketing-item__content');
+    const heading = item.querySelector('h3');
+    const originalFontSize = window.getComputedStyle(heading).fontSize;
+    const originalHeight = content.offsetHeight;
 
     heading.style.fontSize = fontSizeSm;
-    let reducedHeight = heading.offsetHeight;
+    const reducedHeight = heading.offsetHeight;
     heading.style.fontSize = originalFontSize;
-
-    let trigger = ScrollTrigger.create({
-      trigger: item,
-      start: 'top 25%',
-      toggleActions: 'play reverse play reverse',
-      scrub: true,
-      onEnter: () => {
-        gsap.to(heading, { fontSize: fontSizeSm, duration: 0.5, ease: 'power2.out' });
-        gsap.to(content, { height: reducedHeight, duration: 0.5, ease: 'power2.out', onUpdate: () => ScrollTrigger.refresh() });
-      },
-      onLeaveBack: () => {
-        gsap.to(heading, { fontSize: originalFontSize, duration: 0.5, ease: 'power2.out' });
-        gsap.to(content, { height: originalHeight, duration: 0.5, ease: 'power2.out', onUpdate: () => ScrollTrigger.refresh() });
-      },
-    });
-
-    window.addEventListener('resize', () => {
-      ScrollTrigger.refresh();
-    });
-  });
-
-  gsap.utils.toArray('.strategies-list li').forEach((item, index) => {
-    let span = item.querySelector('span');
 
     ScrollTrigger.create({
       trigger: item,
-      start: `top ${50 - index * 5}%`,
-      onEnter: () => span.classList.add('active'),
-      onLeaveBack: () => span.classList.remove('active'),
+      start: 'top 25%',
+      toggleActions: 'play reverse play reverse',
+      onEnter: () => {
+        gsap.to(heading, { fontSize: fontSizeSm, duration: 0.5, ease: 'power2.out' });
+        gsap.to(content, { height: reducedHeight, duration: 0.5, ease: 'power2.out', onUpdate: ScrollTrigger.refresh });
+      },
+      onLeaveBack: () => {
+        gsap.to(heading, { fontSize: originalFontSize, duration: 0.5, ease: 'power2.out' });
+        gsap.to(content, { height: originalHeight, duration: 0.5, ease: 'power2.out', onUpdate: ScrollTrigger.refresh });
+      },
     });
   });
 
-  const footerFeedbackReady = document.querySelector('.footer-feedback__ready span');
-  gsap.to('.footer-feedback__ready span', {
-    ease: 'none',
-    scrollTrigger: {
-      trigger: footerFeedbackReady,
-      start: 'top 50%',
-      onEnter: () => footerFeedbackReady?.classList.add('active'),
-      onLeaveBack: () => footerFeedbackReady?.classList.remove('active'),
-    },
+  // Toggle классов при скролле
+  const toggleClassTriggers = [
+    { selector: '.strategies-list li', span: 'span', start: (i) => `top ${50 - i * 5}%` },
+    { selector: '.about-list li', span: 'span', start: (i) => `top ${50 - i * 5}%` },
+    { selector: '.footer-feedback__ready span', start: 'top 50%' },
+    { selector: '.exp-switch span', start: 'top 50%' },
+    { selector: '.approach-switch span', start: 'top 50%' },
+    { selector: '.services-steps__switch span', start: 'top 50%' },
+    { selector: '.services-projects__switch span', start: 'top 50%' },
+  ];
+
+  toggleClassTriggers.forEach(({ selector, span, start }) => {
+    gsap.utils.toArray(selector).forEach((item, i) => {
+      const target = span ? item.querySelector(span) : item;
+      ScrollTrigger.create({
+        trigger: item,
+        start: typeof start === 'function' ? start(i) : start,
+        onEnter: () => target.classList.add('active'),
+        onLeaveBack: () => target.classList.remove('active'),
+      });
+    });
   });
 
-  gsap.to('.exp-image img', {
-    scale: 1.4,
-    filter: 'blur(50px) grayscale(100%)',
-    opacity: 0.2,
-    ease: 'none',
-    scrollTrigger: {
-      trigger: '.exp',
-      start: 'top top',
-      end: 'bottom bottom',
-      scrub: true,
-    },
-  });
-
-  const expSwitch = document.querySelector('.exp-switch span');
-  gsap.to('.exp-switch span', {
-    ease: 'none',
-    scrollTrigger: {
-      trigger: expSwitch,
-      start: 'top 50%',
-      onEnter: () => expSwitch?.classList.add('active'),
-      onLeaveBack: () => expSwitch?.classList.remove('active'),
-    },
-  });
-
-  gsap.to('.approach-bg__right, .approach-bg__left', {
-    width: 'calc(100% + 960px)',
-    ease: 'none',
-    scrollTrigger: {
-      trigger: '.approach',
-      start: 'top bottom',
-      end: 'top top',
-      scrub: true,
-    },
-  });
-
-  gsap.to('.approach-image img', {
-    yPercent: -60,
-    ease: 'none',
-    scrollTrigger: {
-      trigger: '.approach',
-      start: 'top bottom',
-      end: 'bottom bottom',
-      scrub: true,
-    },
-  });
-
-  gsap.to('.approach-bg', {
-    borderRadius: '0 0 40px 40px',
-    scale: '0.96',
-    ease: 'none',
-    scrollTrigger: {
-      trigger: '.approach',
-      start: 'bottom center',
-      end: 'bottom top',
-      scrub: true,
-    },
-  });
-
-  const approachSwitch = document.querySelector('.approach-switch span');
-  gsap.to('.approach-switch span', {
-    ease: 'none',
-    scrollTrigger: {
-      trigger: approachSwitch,
-      start: 'top 50%',
-      onEnter: () => approachSwitch?.classList.add('active'),
-      onLeaveBack: () => approachSwitch?.classList.remove('active'),
-    },
-  });
-
+  // Lenis smooth scroll
   const lenis = new Lenis({
     duration: 2,
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
     smooth: true,
   });
 
-  function raf(time) {
+  const raf = (time) => {
     lenis.raf(time);
     requestAnimationFrame(raf);
-  }
-
+  };
   requestAnimationFrame(raf);
 
+  // Плавная прокрутка по якорям
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener('click', function (e) {
+    anchor.addEventListener('click', (e) => {
       e.preventDefault();
-
-      const targetId = this.getAttribute('href').substring(1);
-      const targetElement = document.getElementById(targetId);
-
-      if (targetElement) {
-        lenis.scrollTo(targetElement, {
-          offset: 0,
-          duration: 2,
-          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        });
-      }
+      const target = document.getElementById(anchor.getAttribute('href').substring(1));
+      if (target) lenis.scrollTo(target, { offset: 0, duration: 2 });
     });
   });
 
-  function createInfiniteScroll(row, index) {
+  // Бесконечный скролл клиентов
+  document.querySelectorAll('.clients-row').forEach((row, index) => {
     const list = row.querySelector('.clients-list');
     const clone = list.cloneNode(true);
     row.appendChild(clone);
@@ -236,10 +158,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const totalWidth = list.offsetWidth;
     const direction = index % 2 === 0 ? -1 : 1;
 
-    gsap.set([list, clone], {});
-
     const scrollTween = gsap.to(row, {
-      x: direction * totalWidth + 'px',
+      x: direction * totalWidth,
       duration: 60,
       ease: 'none',
       repeat: -1,
@@ -258,159 +178,103 @@ document.addEventListener('DOMContentLoaded', function () {
       onEnterBack: () => scrollTween.play(),
       onLeaveBack: () => scrollTween.pause(),
     });
-  }
+  });
 
-  document.querySelectorAll('.clients-row').forEach(createInfiniteScroll);
-
+  // Approach items
   document.querySelectorAll('.approach-item').forEach((item) => {
     const title = item.querySelector('.approach-item__title');
     const content = item.querySelector('.approach-item__content');
+    if (!title || !content) return;
 
-    if (title && content) {
-      const titleHeight = title.offsetHeight + 'px';
-      const contentHeight = content.scrollHeight + 'px';
+    const heights = {
+      collapsed: `${title.offsetHeight}px`,
+      expanded: `${content.scrollHeight}px`,
+    };
+    content.style.height = heights.collapsed;
 
-      content.style.height = titleHeight;
-
-      item.addEventListener('mouseenter', () => {
-        content.style.height = contentHeight;
-      });
-
-      item.addEventListener('mouseleave', () => {
-        content.style.height = titleHeight;
-      });
-    }
+    item.addEventListener('mouseenter', () => (content.style.height = heights.expanded));
+    item.addEventListener('mouseleave', () => (content.style.height = heights.collapsed));
   });
 
-  const marqueeContainer = document.querySelector('.marquee-container');
-  const marqueeText = document.querySelector('.marquee-text');
+  // Марки
+  const marquee = {
+    container: document.querySelector('.marquee-container'),
+    text: document.querySelector('.marquee-text'),
+  };
 
-  if (marqueeContainer && marqueeText.offsetWidth > marqueeContainer.offsetWidth) {
-    const textWidth = marqueeText.offsetWidth + 40;
-    const containerWidth = marqueeContainer.offsetWidth + 40;
+  if (marquee.container && marquee.text?.offsetWidth > marquee.container.offsetWidth) {
+    const widths = {
+      text: marquee.text.offsetWidth + 40,
+      container: marquee.container.offsetWidth + 40,
+    };
     const speed = 150;
 
-    function animate() {
-      gsap.to(marqueeText, {
-        x: -textWidth,
-        duration: textWidth / speed,
+    const animateMarquee = () => {
+      gsap.to(marquee.text, {
+        x: -widths.text,
+        duration: widths.text / speed,
         ease: 'linear',
         onComplete: () => {
-          gsap.set(marqueeText, { x: containerWidth });
-          animate();
+          gsap.set(marquee.text, { x: widths.container });
+          animateMarquee();
         },
       });
-    }
-
-    gsap.set(marqueeText, { x: 0 });
-    animate();
+    };
+    gsap.set(marquee.text, { x: 0 });
+    animateMarquee();
   }
 
-  gsap.to('.full-image-2', {
-    width: fullImageWidth,
-    borderRadius: '40px',
-    ease: 'none',
-    scrollTrigger: {
-      trigger: '.full-image-2',
-      start: 'top 50%',
-      end: 'bottom bottom',
-      scrub: true,
-    },
-  });
-
-  gsap.to('.full-image-2 img', {
-    y: 200,
-    ease: 'none',
-    scrollTrigger: {
-      trigger: '.full-image-2',
-      start: 'top 50%',
-      end: 'bottom bottom',
-      scrub: true,
-    },
-  });
-
-  const stepsSwitch = document.querySelector('.services-steps__switch span');
-  gsap.to('.services-steps__switch span', {
-    ease: 'none',
-    scrollTrigger: {
-      trigger: stepsSwitch,
-      start: 'top 50%',
-      onEnter: () => stepsSwitch?.classList.add('active'),
-      onLeaveBack: () => stepsSwitch?.classList.remove('active'),
-    },
-  });
-
+  // Карточки сервисов
   if (window.innerWidth >= 1200) {
-    const cards = gsap.utils.toArray('.services-steps__card');
-    const step = 0.05;
-    const totalCards = cards.length;
+    gsap.utils.toArray('.services-steps__card').forEach((card, i, cards) => {
+      const step = 0.05;
+      const finalScale = 1 - (cards.length - 1 - i) * step;
 
-    cards.forEach((card, i) => {
-      const finalScale = 1 - (totalCards - 1 - i) * step;
-      card.style.top = `${20 + i * 20}px`;
-      card.style.marginBottom = `${(totalCards - 1 - i) * 20}px`;
-      card.style.marginTop = `${(totalCards - 1 - i) * -20 - 20}px`;
-      card.style.zIndex = i + 1;
+      Object.assign(card.style, {
+        top: `${20 + i * 20}px`,
+        marginBottom: `${(cards.length - 1 - i) * 20}px`,
+        marginTop: `${(cards.length - 1 - i) * -20 - 20}px`,
+        zIndex: i + 1,
+      });
 
       gsap.to(card, {
         scrollTrigger: {
           trigger: card,
           start: 'top top+=20',
-          end: () => `top+=${card.offsetHeight} top`,
+          end: `top+=${card.offsetHeight} top`,
           scrub: true,
         },
         scale: finalScale,
-        opacity: i === totalCards - 1 ? 1 : 0.5,
+        opacity: i === cards.length - 1 ? 1 : 0.5,
       });
     });
   }
 
-  const servicesProjectsSwitch = document.querySelector('.services-projects__switch span');
-  gsap.to('.services-projects__switch span', {
-    ease: 'none',
-    scrollTrigger: {
-      trigger: servicesProjectsSwitch,
-      start: 'top 50%',
-      onEnter: () => servicesProjectsSwitch?.classList.add('active'),
-      onLeaveBack: () => servicesProjectsSwitch?.classList.remove('active'),
-    },
-  });
-
-  const projectsCarousel = new Swiper('.projects-slider__carousel', {
+  // Слайдер проектов
+  new Swiper('.projects-slider__carousel', {
     spaceBetween: 20,
-    pagination: {
-      el: '.projects-slider__pagination',
-    },
+    pagination: { el: '.projects-slider__pagination' },
     navigation: {
       nextEl: '.projects-slider__arrow-next',
       prevEl: '.projects-slider__arrow-prev',
     },
   });
 
-  gsap.utils.toArray('.about-list li').forEach((item, index) => {
-    let span = item.querySelector('span');
-
-    ScrollTrigger.create({
-      trigger: item,
-      start: `top ${50 - index * 5}%`,
-      onEnter: () => span.classList.add('active'),
-      onLeaveBack: () => span.classList.remove('active'),
-    });
-  });
-
-  const splitTypes = document.querySelectorAll('[data-animate-text]');
-  splitTypes.forEach((char, i) => {
-    const text = new SplitType(char, { types: ['chars', 'words'] });
+  // Анимация текста
+  document.querySelectorAll('[data-animate-text]').forEach((element) => {
+    const text = new SplitType(element, { types: ['chars', 'words'] });
     gsap.from(text.chars, {
       scrollTrigger: {
-        trigger: char,
+        trigger: element,
         start: 'top 80%',
         end: 'top 20%',
         scrub: true,
-        markers: false,
       },
       opacity: 0.2,
       stagger: 0.1,
     });
   });
+
+  // Обновление при ресайзе
+  window.addEventListener('resize', () => ScrollTrigger.refresh());
 });

@@ -50,7 +50,22 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   const animations = [
-    { selector: '.hero', props: { yPercent: 50 }, trigger: { start: 'top top', end: 'bottom top' } },
+    {
+      selector: '.hero',
+      props: { yPercent: 50 },
+      trigger: {
+        start: 'top top',
+        end: 'bottom top',
+        onUpdate: (self) => {
+          const headerBurger = document.querySelector('.header-burger');
+          if (self.progress === 1) {
+            headerBurger.classList.add('show');
+          } else {
+            headerBurger.classList.remove('show');
+          }
+        },
+      },
+    },
     { selector: '.full-image', props: { width: '100%' }, trigger: { start: fullImageTrigger, end: 'bottom bottom' } },
     { selector: '.full-image img', props: { y: fullImageY }, trigger: { start: fullImageTrigger, end: 'bottom bottom' } },
     {

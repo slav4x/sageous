@@ -350,7 +350,7 @@ document.addEventListener('DOMContentLoaded', () => {
   requestAnimationFrame(rafUpdate);
 
   const preloader = document.querySelector('.preloader');
-  const progressPath = document.querySelector('.progress-path');
+  const progressPath = document.querySelector('.preloader-path');
   const maskPath = document.querySelector('.mask-path');
   const progressText = document.querySelector('.preloader-progress');
   const preloaderSwitch = document.querySelector('.preloader-switch');
@@ -393,13 +393,12 @@ document.addEventListener('DOMContentLoaded', () => {
       gsap.to(maskPath, {
         delay: 0.3,
         duration: 3,
-        ease: 'power2.out',
+        ease: 'ease',
         scale: maxSize,
         x: centerX - (svgWidth / 2) * maxSize,
         y: centerY - (svgHeight / 2) * maxSize,
         onComplete: () => {
           preloader.remove();
-          document.body.style.overflow = 'auto';
         },
       });
     },

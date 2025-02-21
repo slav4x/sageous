@@ -348,4 +348,70 @@ document.addEventListener('DOMContentLoaded', () => {
     requestAnimationFrame(rafUpdate);
   };
   requestAnimationFrame(rafUpdate);
+
+  const preloader = document.querySelector('.preloader');
+  const progressPath = document.querySelector('.progress-path');
+  const maskPath = document.querySelector('.mask-path');
+  const progressText = document.querySelector('.preloader-progress');
+  const preloaderSwitch = document.querySelector('.preloader-switch');
+
+  if (!preloader || !progressPath || !maskPath || !progressText || !preloaderSwitch) return;
+
+  const totalLength = 832;
+  const duration = 2;
+
+  const centerX = document.documentElement.clientWidth / 2;
+  const centerY = document.documentElement.clientHeight / 2;
+
+  const svgScale = 0;
+  const svgWidth = 300;
+  const svgHeight = 160;
+
+  gsap.set(progressPath, { strokeDashoffset: totalLength });
+  gsap.set(progressText, { innerHTML: '0%' });
+
+  gsap.set(maskPath, {
+    x: centerX - (svgWidth * svgScale) / 2,
+    y: centerY - (svgHeight * svgScale) / 2,
+    scale: svgScale,
+  });
+
+  gsap.to(progressPath, {
+    duration: duration,
+    ease: 'none',
+    strokeDashoffset: 0,
+    onUpdate: function () {
+      const progress = this.progress();
+      const value = Math.floor(progress * 100);
+      progressText.textContent = `${value}%`;
+    },
+    onComplete: () => {
+      preloaderSwitch.classList.add('active');
+      preloader.classList.add('open');
+
+      const maxSize = Math.sqrt(document.documentElement.clientWidth ** 2 + document.documentElement.clientHeight ** 2) / (svgWidth / 2);
+      gsap.to(maskPath, {
+        delay: 0.3,
+        duration: 3,
+        ease: 'power2.out',
+        scale: maxSize,
+        x: centerX - (svgWidth / 2) * maxSize,
+        y: centerY - (svgHeight / 2) * maxSize,
+        onComplete: () => {
+          preloader.remove();
+          document.body.style.overflow = 'auto';
+        },
+      });
+    },
+  });
+
+  window.addEventListener('resize', () => {
+    const newCenterX = document.documentElement.clientWidth / 2;
+    const newCenterY = document.documentElement.clientHeight / 2;
+    const currentScale = maskPath._gsap.scale || 0;
+    gsap.set(maskPath, {
+      x: newCenterX - (svgWidth / 2) * currentScale,
+      y: newCenterY - (svgHeight / 2) * currentScale,
+    });
+  });
 });

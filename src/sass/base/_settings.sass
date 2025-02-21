@@ -374,3 +374,49 @@ input, textarea
 
 .main-services > .header
   display: none
+
+.preloader
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  z-index: 9999
+  &.open
+    pointer-events: none
+  &-mask
+    width: 100%
+    height: 100%
+  &-switch
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    z-index: 10000
+    transition: .3s
+    transition-delay: .3s
+    &::before
+      content: ''
+      position: absolute
+      top: 30px
+      left: 30px
+      width: 100px
+      height: 100px
+      background: #fff
+      border-radius: 100%
+      transition: .3s
+    &.active
+      opacity: 0
+      &::before
+        left: 170px
+  &-path
+    stroke-dasharray: 832
+    stroke-dashoffset: 832
+  &-progress
+    position: absolute
+    top: calc(100% + 40px)
+    width: 100%
+    text-align: center
+    color: rgba(255,255,255,.65)
+    font-size: 14px
+    z-index: 10001

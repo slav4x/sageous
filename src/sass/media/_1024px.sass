@@ -384,3 +384,18 @@
 	.contacts
 		&-title
 			overflow: hidden
+
+	.preloader
+		&-switch
+			svg
+				width: 150px
+				height: 80px
+			&::before
+				width: 50px
+				height: 50px
+				top: 15px
+				left: 15px
+			&.active::before
+				left: 85px
+		&-progress
+			top: calc(100% + 20px)

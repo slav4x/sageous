@@ -121,12 +121,12 @@ document.addEventListener('DOMContentLoaded', () => {
         start: 'top 25%',
         toggleActions: 'play reverse play reverse',
         onEnter: () => {
-          gsap.to(heading, { fontSize: fontSizeSm, duration: 0.5, ease: 'power2.out' });
-          gsap.to(content, { height: reducedHeight, duration: 0.5, ease: 'power2.out', onUpdate: ScrollTrigger.refresh });
+          gsap.to(heading, { fontSize: fontSizeSm, duration: 1, ease: 'power2.out' });
+          gsap.to(content, { height: reducedHeight, duration: 1, ease: 'power2.out', onUpdate: ScrollTrigger.refresh });
         },
         onLeaveBack: () => {
-          gsap.to(heading, { fontSize: originalFontSize, duration: 0.5, ease: 'power2.out' });
-          gsap.to(content, { height: originalHeight, duration: 0.5, ease: 'power2.out', onUpdate: ScrollTrigger.refresh });
+          gsap.to(heading, { fontSize: originalFontSize, duration: 1, ease: 'power2.out' });
+          gsap.to(content, { height: originalHeight, duration: 1, ease: 'power2.out', onUpdate: ScrollTrigger.refresh });
         },
       });
     });
